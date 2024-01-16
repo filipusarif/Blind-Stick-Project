@@ -46,7 +46,7 @@
                                 aria-current="page">Beranda</a>
                         </li>
                         <li>
-                            <a href="/Service"
+                            <a href="/service"
                                 class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Layanan</a>
                         </li>
                         <li>
@@ -64,19 +64,19 @@
     </nav>
     
     
-    <section class=" bg-gradient-to-tr  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden h-screen w-full">
+    <section class=" bg-gradient-to-tr  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden h-screen w-full px-5 lg:px-0">
         <div class="relative">
             <img src="asset\image\kubus.svg" alt="" class="absolute opacity-50">
         </div>
         <section class="container flex items-center justify-center flex-col min-h-screen  mx-auto relative">
             <div class="flex items-center justify-center lg:flex-row flex-col-reverse">
                 <div class="text-slate-200 basis-[55%] ">
-                    <h3 class="text-[200%] -mb-5">Hai, Selamat datang</h3>
-                    <h1 class="text-[280%] font-extrabold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Solusi Inovatif untuk <br> Navigasi Aman Tunanetra.</h1>
-                    <p class="text-[140%]">Berikan Kemandirian, Bukan Penderitaan</p>
-                    <div class="flex gap-10 mt-10">
-                        <a href="/signin" class="py-3 px-14 bg-[#3DCBB4] rounded-[10px] font-medium">Daftar</a>
-                        <a href="/login" class="py-3 px-14 bg-transparent border-[#3DCBB4] outline-none border-[1px] rounded-[10px] font-medium">Masuk</a>
+                    <h3 class="lg:text-[200%] text-[100%] ">Hai, Selamat datang</h3>
+                    <h1 class="lg:text-[280%]  text-[150%] font-extrabold lg:leading-[60px] leading-[30px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Solusi Inovatif untuk <br> Navigasi Aman Tunanetra.</h1>
+                    <p class="lg:text-[140%] text-[90%]">Berikan Kemandirian, Bukan Penderitaan</p>
+                    <div class="flex gap-10 lg:mt-10 mt-7">
+                        <a href="/signin" class="lg:py-3 lg:px-14 py-3 px-9 bg-[#3DCBB4] rounded-[10px] font-medium">Daftar</a>
+                        <a href="/login" class="lg:py-3 lg:px-14 py-3 px-9 bg-transparent border-[#3DCBB4] outline-none border-[1px] rounded-[10px] font-medium">Masuk</a>
                     </div>
                 </div>
                 <div class="basis-[45%] relative">
@@ -87,7 +87,7 @@
                     
                 </div>
             </div>
-            <div class="flex justify-between items-center w-full">
+            <div class="flex justify-between items-center w-full mt-20 lg:mt-0">
                 <div class="flex gap-3">
                     <a href=""><img width="25px" src="asset\image\github.svg" alt="github"></a>
                     <a href=""><img width="25px" src="asset\image\wa.svg" alt="whatsup"></a>
@@ -105,7 +105,7 @@
         <div class="container flex items-center justify-center flex-col  mx-auto">
             <h1 class="text-[280%] font-bold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Layanan</h1>
             <p class="text-medium ">Blind Stick dapat melayani pengguna dengan</p>
-            <div class="flex justify-center gap-16 items-center w-full mt-8 pb-5">
+            <div class="flex justify-center gap-16 lg:flex-row flex-col items-center w-full mt-8 pb-5">
                 <div class="flex flex-col gap-5">
                     <img src="asset/image/navigasi.svg" alt="" width="100%">
                     <p class="text-center text-[120%] -translate-y-1">Navigasi</p>
@@ -131,9 +131,9 @@
     </section>
     <section class="bg-gradient-to-tr  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-[150vh] w-full text-[#EEE]">
         <div class="container">
-            <h1 class="text-[280%] text-center font-bold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#00fff2]">Layanan</h1>
+            <h1 class="text-[280%] text-center font-bold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#00fff2]">Tentang Kami</h1>
             <p class="text-medium text-center">Mengenal lebih dekat Blind Stick</p>
-            <div class="flex flex-center items-center w-[80%] mx-auto gap-5">
+            <div class="flex flex-center flex-col lg:flex-row items-center w-[80%] mx-auto gap-5">
                 <div class="basis-[40%]">
                     <img src="asset/image/tentang1.svg" alt="">
                 </div>
@@ -141,7 +141,7 @@
                     <p>Selamat datang di Blind Stick, sebuah inovasi revolusioner yang menggabungkan teknologi Internet of Things (IoT) dengan misi sosial untuk memberikan bantuan kepada tunanetra dalam menjaga kesehatan dan keamanan mereka. Kami percaya bahwa mobilitas adalah aspek penting dalam menjaga kesehatan mental dan fisik seseorang, dan Blind Stick hadir sebagai solusi modern untuk meningkatkan kemandirian dan keamanan tunanetra.</p>
                 </div>
             </div>
-            <div class="flex flex-center flex-row-reverse items-center w-[80%] mx-auto gap-5">
+            <div class="flex flex-center lg:flex-row-reverse flex-col lg:mt-1 mt-4 items-center w-[80%] mx-auto gap-5">
                 <div class="basis-[40%]">
                     <img src="asset/image/tentang22.svg" alt="">
                 </div>
@@ -149,7 +149,7 @@
                     <p>Selamat datang di Blind Stick, sebuah inovasi revolusioner yang menggabungkan teknologi Internet of Things (IoT) dengan misi sosial untuk memberikan bantuan kepada tunanetra dalam menjaga kesehatan dan keamanan mereka. Kami percaya bahwa mobilitas adalah aspek penting dalam menjaga kesehatan mental dan fisik seseorang, dan Blind Stick hadir sebagai solusi modern untuk meningkatkan kemandirian dan keamanan tunanetra.</p>
                 </div>
             </div>
-            <h1 class="text-[280%] text-center font-bold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#00fff2]">Kritik & Saran</h1>
+            <h1 class="text-[280%] text-center font-bold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#00fff2] lg:mt-0 mt-5">Kritik & Saran</h1>
             <p class="text-medium text-center">Kritik anda adalah semangat kami</p>
             <form action="" class="w-full grid place-items-center pb-10">
                 <div class="w-full">

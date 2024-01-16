@@ -8,7 +8,7 @@
     <title>Blind Stick</title>
     @vite('resources/css/app.css')
     <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var nilaiSensor;
         var audioElement = new Audio('audio/audioObj.mp3');
         var tempSensor;
@@ -80,39 +80,79 @@
                 nav.className = 'text-slate-400 bg-[#215695] bg-opacity-80 backdrop-blur-md transition ease-in-out delay-200 h-[50px] w-full flex items-center fixed text-slate-200 bg-transparent z-50';
             } 
         };
-    </script>
+    </script> -->
 </head>
 
-<body class="bg-slate-900   ">
-    <header class=" h-[50px] w-full flex items-center fixed text-slate-200 bg-transparent z-50 transition ease-in-out delay-150" id="navBar">
-        <nav class="container mx-auto flex justify-between items-center ">
-            <a href="/" class="font-extrabold text-[180%]"><img src="asset\image\logoBS.png" alt="" width="50%"></a>
-            <nav class="flex gap-8">
-                <a href="/">Beranda</a>
-                <a href="/service">Layanan</a>
-                <a href="">Bantuan</a>
-                <a href="">Kontak</a>
-            </nav>
-        </nav>
-    </header>
-    <section class=" text-slate-200 bg-gradient-to-tr  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden h-[100vh] w-full relative">
+<body class="bg-slate-900">
+    <nav class="bg-[#215695] bg-opacity-70 backdrop-blur-md fixed w-full z-50 h-[50px] grid place-items-center" id="" >
+        <div class="container bg-[#215695] bg-opacity-70 lg:bg-transparent">
+            <div class="bg-transparent w-full flex flex-wrap  items-center justify-between px-4 mx-auto">
+                <a href="#" class="flex items-center">
+                    <img src="asset\image\logoBS.png" class="h-6 mr-3 sm:h-9" alt="Blind Stick Logo">
+                </a>
+                <div class="flex items-center lg:hidden lg:order-2 ">
+                    <div class="hidden mt-2 mr-4 sm:inline-block">
+                        <span></span>
+                    </div>
+    
+                    <button data-collapse-toggle="mobile-menu-2" type="button"
+                        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        aria-controls="mobile-menu-2" aria-expanded="true">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="items-center justify-between w-full lg:flex lg:w-auto lg:order-1 " id="mobile-menu-2">
+                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                        <li>
+                            <a href="/"
+                                class="block py-2 pl-3 pr-4 ext-slate-200 bg-[#00d9ff] rounded lg:bg-transparent  text-slate-100 lg:p-0 dark:ext-slate-200"
+                                aria-current="page">Beranda</a>
+                        </li>
+                        <li>
+                            <a href="/service"
+                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Layanan</a>
+                        </li>
+                        <li>
+                            <a href="/"
+                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Bantuan</a>
+                        </li>
+                        <li>
+                            <a href="/"
+                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Kontak</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class=" text-slate-200 bg-gradient-to-tr  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
         <div class="">
             <img src="asset/image/kubus.svg" alt="" class="-left-56 -top-20 absolute opacity-50">
         </div>
         
-        <div class="container h-screen mx-auto pt-[3%] relative">
+        <div class="container min-h-[80vh] mx-auto pt-[3%] pb-5 relative">
             <h1 class="text-[200%] text-center font-extrabold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Layanan</h1>
-            <p class="text-center">Monitoring object di sekitar anda</p>
-            <div class="flex flex-row items-center justify-center h-[80vh] gap-3">
-                <div class=" flex flex-col basis-[70%] gap-5  w-full h-full">
-                    <div class=" basis-[70%] bg-[#173865] flex justify-center items-center rounded-[20px]">
-                        <div class="w-[50%] h-full text-center">
+            <p class="text-center -mt-2 mb-4">Monitoring object di sekitar anda</p>
+            <div class="flex lg:flex-row flex-col-reverse items-center justify-center min-h-[80vh]  gap-3">
+                <div class=" flex flex-col basis-[70%] gap-5  w-full h-full lg:h-[80vh] ">
+                    <div class="lg:basis-[70%] h-[200px] lg:h-auto bg-[#173865] flex justify-center items-center rounded-[20px]">
+                        <div class="w-[50%] h-full text-center border-r-[4px] border-[#122F58]">
                             <h1 class="w-full h-[30%] bg-[#122F58] rounded-tl-[10px] grid place-items-center text-[200%] font-bold">Halangan</h1>
-                            <p class="w-full h-[70%]  grid place-items-center text-[250%]" id="obj">loading</p>
+                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="obj">loading</p>
                         </div>
                         <div class="w-[50%] h-full text-center">
                             <h1 class="w-full h-[30%] bg-[#122F58] rounded-tr-[10px] grid place-items-center text-[200%] font-bold">Jarak</h1>
-                            <p class="w-full h-[70%]  grid place-items-center text-[250%]" id="jarak" >loading</p>
+                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="jarak" >loading</p>
                         </div>
                     </div>
                     <div class="bg-[#173865] w-full h-fit flex p-12 rounded-[18px] items-center justify-center gap-5 flex-wrap">
@@ -123,7 +163,7 @@
                         <a href="" class="flex flex-col items-center font-medium"><img src="/asset/image/bantuanMenu.svg" alt="" width="100px"> Bantuan</a>
                     </div>
                 </div>
-                <div class="basis-[30%] bg-[#173865] flex items-center justify-center flex-col rounded-[20px] h-full">
+                <div class="lg:basis-[30%] w-full lg:h-[80vh] bg-[#173865] flex items-center justify-center lg:flex-col flex-row rounded-[20px] h-full">
                     <button id="tombolAktif" onclick="activeSound()" class="basis-[50%]"><img src="/asset/image/volumeUP.svg" alt="" width="150px"></button>
                     <button id="tombolNonaktif"class="" onclick="nonActiveSound()" class="basis-[50%]"><img src="/asset/image/volumeDown.svg" alt="" width="150px"></button>
                 </div>
@@ -159,7 +199,8 @@
             </div>
         </footer>
 
-        
+        <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+
 </body>
 
 </html>
