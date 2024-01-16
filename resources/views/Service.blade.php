@@ -7,7 +7,80 @@
     <link rel="shortcut icon" href="/asset/image/titleLogo.png" type="image/x-icon">
     <title>Blind Stick</title>
     @vite('resources/css/app.css')
+    <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript">
+        var nilaiSensor;
+        var audioElement = new Audio('audio/audioObj.mp3');
+        var tempSensor;
+        var audioStatus= true;
+        var countSensor = 0;
+        
+        function activeSound(){
+            audioStatus = true;
+            
+        }
+
+        function nonActiveSound(){
+            audioStatus = false;
+        }
+        
+        function speak(){
+            // Menggunakan API pengenalan suara untuk mendengarkan perintah
+            if (window.SpeechRecognition || window.webkitSpeechRecognition) {
+                var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     
+                recognition.onresult = function(event) {
+                    var perintah = event.results[0][0].transcript.toLowerCase();
+                    console.log("Perintah Suara: " + perintah);
+    
+                    // Jika perintah adalah "matikan suara", panggil fungsi matikanSuaraDenganPerintah
+                    if (perintah.includes("matikan suara")) {
+                        nonActiveSound();
+                    }
+                };
+    
+                recognition.start();
+            }
+        }
+
+        $(document).ready(function(){
+            setInterval(function(){
+                $("#obj").load("{{ url('bacaSensor') }}", function(response, status, xhr) {
+                    if (status == "success") {
+                        nilaiSensor = response; // Nilai dari hasil bacaSensor
+                        // Lakukan sesuatu dengan nilaiSensor
+                        if (nilaiSensor === "ada" && (tempSensor !== nilaiSensor || countSensor >= 3 ) && audioStatus === true) {
+                            // Memainkan suara
+                            audioElement.play();
+                            countSensor = 0;
+                        }else if(nilaiSensor === "ada" && audioStatus === true){
+                            countSensor++;
+                        }
+                        tempSensor = nilaiSensor;
+                        console.log("Nilai Sensor: " + nilaiSensor);
+                        }
+                });
+
+                $("#jarak").load("{{ url('bacaJarak') }}", function(response, status, xhr) {
+                    if (status == "success") {
+                        var nilaiJarak = response; // Nilai dari hasil bacaJarak
+                        // Lakukan sesuatu dengan nilaiJarak
+                        console.log("Nilai Jarak: " + nilaiJarak);
+                    }
+                });
+            }, 2000);
+        });
+        
+
+        window.onscroll = () => {
+            const nav = document.querySelector('#navBar');
+            if(this.scrollY <= 10){
+                nav.className = 'text-slate-400 bg-transparent transition ease-in-out delay-200  h-[50px] w-full flex items-center fixed text-slate-200 bg-transparent z-50';
+            }else{
+                nav.className = 'text-slate-400 bg-[#215695] bg-opacity-80 backdrop-blur-md transition ease-in-out delay-200 h-[50px] w-full flex items-center fixed text-slate-200 bg-transparent z-50';
+            } 
+        };
+    </script>
 </head>
 
 <body class="bg-slate-900   ">
@@ -86,80 +159,7 @@
             </div>
         </footer>
 
-        <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
-        <script type="text/javascript">
-            // var nilaiSensor;
-            // var audioElement = new Audio('audio/alert.mp3');
-            // var tempSensor;
-            // var audioStatus=true;
-            // var countSensor = 0;
-            
-            // function activeSound(){
-            //     audioStatus = true;
-                
-            // }
-
-            // function nonActiveSound(){
-            //     audioStatus = false;
-            // }
-            
-            // function speak(){
-            //     // Menggunakan API pengenalan suara untuk mendengarkan perintah
-            //     if (window.SpeechRecognition || window.webkitSpeechRecognition) {
-            //         var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
         
-            //         recognition.onresult = function(event) {
-            //             var perintah = event.results[0][0].transcript.toLowerCase();
-            //             console.log("Perintah Suara: " + perintah);
-        
-            //             // Jika perintah adalah "matikan suara", panggil fungsi matikanSuaraDenganPerintah
-            //             if (perintah.includes("matikan suara")) {
-            //                 nonActiveSound();
-            //             }
-            //         };
-        
-            //         recognition.start();
-            //     }
-            // }
-
-            // $(document).ready(function(){
-            //     setInterval(function(){
-            //         $("#obj").load("{{ url('bacaSensor') }}", function(response, status, xhr) {
-            //         if (status == "success") {
-            //             nilaiSensor = response; // Nilai dari hasil bacaSensor
-            //             // Lakukan sesuatu dengan nilaiSensor
-            //             if (nilaiSensor === "ada" && (tempSensor !== nilaiSensor || countSensor >= 3 ) && audioStatus === true) {
-            //                 // Memainkan suara
-            //                 audioElement.play();
-            //                 countSensor = 0;
-            //             }else if(nilaiSensor === "ada" && audioStatus === true){
-            //                 countSensor++;
-            //             }
-            //             tempSensor = nilaiSensor;
-            //             console.log("Nilai Sensor: " + nilaiSensor);
-            //         }
-            //     });
-
-            //     $("#jarak").load("{{ url('bacaJarak') }}", function(response, status, xhr) {
-            //         if (status == "success") {
-            //             var nilaiJarak = '110'; // Nilai dari hasil bacaJarak
-            //             // Lakukan sesuatu dengan nilaiJarak
-            //             console.log("Nilai Jarak: " + nilaiJarak);
-            //         }
-            //     });
-            //     }, 1000);
-            // });
-        
-    
-            window.onscroll = () => {
-				const nav = document.querySelector('#navBar');
-				if(this.scrollY <= 10){
-					nav.className = 'text-slate-400 bg-transparent transition ease-in-out delay-200  h-[50px] w-full flex items-center fixed text-slate-200 bg-transparent z-50';
-				}else{
-					nav.className = 'text-slate-400 bg-[#215695] bg-opacity-80 backdrop-blur-md transition ease-in-out delay-200 h-[50px] w-full flex items-center fixed text-slate-200 bg-transparent z-50';
-				} 
-			};
-        </script>
 </body>
 
 </html>
