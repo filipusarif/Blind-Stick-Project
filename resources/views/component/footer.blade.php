@@ -14,9 +14,9 @@
             </div>
             <div class=" basis-[13%] ">
                 <h1 class="text-[24px] font-bold">Terhubung</h1>
-                <p>blindStick</p>
-                <p>@blindStick</p>
-                <p>blindStick</p>
+                <p>blindstick</p>
+                <p>@blindstick10</p>
+                <p>blindstick</p>
             </div>
         </div>
     </div>

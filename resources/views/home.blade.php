@@ -90,9 +90,9 @@
             </div>
             <div class="flex justify-between items-center w-full mt-20 lg:mt-0">
                 <div class="flex gap-3">
-                    <a href=""><img width="25px" src="asset\image\github.svg" alt="github"></a>
-                    <a href=""><img width="25px" src="asset\image\wa.svg" alt="whatsup"></a>
-                    <a href=""><img width="25px" src="asset\image\instagram.svg" alt="instagram"></a>
+                    <a href="https://github.com/filipusarif/Blind-Stick-Project" target="_blank"><img width="25px" src="asset\image\github.svg" alt="github"></a>
+                    <a href="https://wa.me/qr/HTPPCZOWYBQVL1" target="_blank"><img width="25px" src="asset\image\wa.svg" alt="whatsApp"></a>
+                    <a href="https://www.instagram.com/blindstick10?igsh=cG0yamo2OWZmNTU2" target="_blank"><img width="25px" src="asset\image\instagram.svg" alt="instagram"></a>
                 </div>
                 <div class="flex gap-1">
                     <div class="w-[25px] h-[25px] bg-[#2AA7D6] rounded-[50%]"></div>
