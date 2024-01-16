@@ -121,12 +121,12 @@
                         </li>
                         <li>
                             <a href="/layanan"
-                                class="block py-2 pl-3 pr-4 ext-slate-200 bg-[#00d9ff] rounded lg:bg-transparent  text-slate-100 lg:p-0 dark:ext-slate-200"
-                                aria-current="page">Layanan</a>
+                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Layanan</a>
                         </li>
                         <li>
                             <a href="/bantuan"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Bantuan</a>
+                                class="block py-2 pl-3 pr-4 ext-slate-200 bg-[#00d9ff] rounded lg:bg-transparent  text-slate-100 lg:p-0 dark:ext-slate-200"
+                                aria-current="page">Bantuan</a>
                         </li>
                         <li>
                             <a href="/"
@@ -138,25 +138,34 @@
         </div>
     </nav>
 
-
     <section class=" text-slate-200 bg-gradient-to-tr  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
         <div class="">
             <img src="asset/image/kubus.svg" alt="" class="-left-56 -top-20 absolute opacity-50">
         </div>
         
         <div class="container min-h-[80vh] mx-auto pt-[3%] pb-5 relative">
-            <h1 class="text-[200%] text-center font-extrabold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Layanan</h1>
-            <p class="text-center -mt-2 mb-4">Monitoring object di sekitar anda</p>
+            <h1 class="text-[200%] text-center font-extrabold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Bantuan</h1>
+            <p class="text-center -mt-2 mb-4">Sedia Setiap Saat, dalam keadaan darurat</p>
             <div class="flex lg:flex-row flex-col-reverse items-center justify-center min-h-[80vh]  gap-3">
                 <div class=" flex flex-col basis-[70%] gap-5  w-full h-full lg:h-[80vh] ">
-                    <div class="lg:basis-[70%] h-[200px] lg:h-auto bg-[#173865] flex justify-center items-center rounded-[20px]">
-                        <div class="w-[50%] h-full text-center border-r-[4px] border-[#122F58]">
-                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tl-[10px] grid place-items-center text-[200%] font-bold">Halangan</h1>
-                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="obj">loading</p>
+                    <div class="lg:basis-[70%]  h-[700px] lg:h-auto bg-[#173865] flex flex-col lg:flex-row justify-center items-center rounded-[20px]">
+                        <div class="lg:w-[50%] w-full h-[400px] lg:h-full text-center lg:border-r-[4px] border-[#122F58]">
+                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tl-[10px] grid place-items-center text-[200%] font-bold">Status</h1>
+                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="obj">Aman</p>
                         </div>
-                        <div class="w-[50%] h-full text-center">
-                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tr-[10px] grid place-items-center text-[200%] font-bold">Jarak</h1>
-                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="jarak" >loading</p>
+                        <div class="lg:w-[50%] w-full h-auto  lg:h-full text-center">
+                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tr-[10px] grid place-items-center text-[200%] font-bold">Kirim Signal</h1>
+                            <form action="" class=" h-[250px] flex items-center flex-col gap-5 justify-center pb-5">
+                                <select name="signalName" id="signal" class="bg-[#1C4B83] py-2 px-3 rounded-[37px] border-1 border-[#2AA7D6] border outline-none text-[120%]">
+                                    <option value="1">Segera Datang</option>
+                                    <option value="2">Nanti Kesana</option>
+                                    <option value="3">Tidak Bisa Sekarang</option>
+                                    <option value="4">Maaf, Tidak Bisa</option>
+                                </select>
+                                <!-- <input type="text" name="signalName" id="signal" class="bg-[#1C4B83] py-2 px-3 rounded-[37px] border-1 border-[#2AA7D6] border outline-none"> -->
+                                <button type="submit" class="text-right py-3 px-14 bg-[#3DCBB4] rounded-[30px] font-medium">Kirim</button>
+                                <!-- <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="jarak" >loading</p> -->
+                            </form>
                         </div>
                     </div>
                     <div class="bg-[#173865] w-full h-fit flex py-4 rounded-[18px] items-center justify-center gap-5 flex-wrap">
@@ -177,6 +186,7 @@
 
     <!-- Footer -->
     @include('component.footer')
+
     <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 
 </body>

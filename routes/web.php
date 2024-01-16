@@ -18,16 +18,28 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function () {
+Route::get('/masuk', function () {
     return view('login');
 });
 
-Route::get('/signin', function () {
+Route::get('/daftar', function () {
     return view('signin');
 });
 
-Route::get('/service', function () {
+Route::get('/layanan', function () {
     return view('service');
+});
+Route::get('/bantuan', function () {
+    return view('bantuan');
+});
+Route::get('/riwayat', function () {
+    return view('riwayat');
+});
+Route::get('/navigasi', function () {
+    return view('navigasi');
+});
+Route::get('/pengguna', function () {
+    return view('user');
 });
 // Route::get('/bacaSensor', function () {
 //     return view('bacaSensor');

@@ -11,10 +11,11 @@
 
 <body class=" bg-slate-900 ">
     
+    <!-- Navbar -->
     <nav class="bg-[#215695] bg-opacity-70 backdrop-blur-md fixed w-full z-50 h-[50px] grid place-items-center" id="" >
         <div class="container bg-[#215695] bg-opacity-70 lg:bg-transparent">
             <div class="bg-transparent w-full flex flex-wrap  items-center justify-between px-4 mx-auto">
-                <a href="#" class="flex items-center">
+                <a href="/" class="flex items-center">
                     <img src="asset\image\logoBS.png" class="h-6 mr-3 sm:h-9" alt="Blind Stick Logo">
                 </a>
                 <div class="flex items-center lg:hidden lg:order-2 ">
@@ -46,11 +47,11 @@
                                 aria-current="page">Beranda</a>
                         </li>
                         <li>
-                            <a href="/service"
+                            <a href="/layanan"
                                 class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Layanan</a>
                         </li>
                         <li>
-                            <a href="/"
+                            <a href="/bantuan"
                                 class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Bantuan</a>
                         </li>
                         <li>
@@ -75,8 +76,8 @@
                     <h1 class="lg:text-[280%]  text-[150%] font-extrabold lg:leading-[60px] leading-[30px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Solusi Inovatif untuk <br> Navigasi Aman Tunanetra.</h1>
                     <p class="lg:text-[140%] text-[90%]">Berikan Kemandirian, Bukan Penderitaan</p>
                     <div class="flex gap-10 lg:mt-10 mt-7">
-                        <a href="/signin" class="lg:py-3 lg:px-14 py-3 px-9 bg-[#3DCBB4] rounded-[10px] font-medium">Daftar</a>
-                        <a href="/login" class="lg:py-3 lg:px-14 py-3 px-9 bg-transparent border-[#3DCBB4] outline-none border-[1px] rounded-[10px] font-medium">Masuk</a>
+                        <a href="/daftar" class="lg:py-3 lg:px-14 py-3 px-9 bg-[#3DCBB4] rounded-[10px] font-medium">Daftar</a>
+                        <a href="/masuk" class="lg:py-3 lg:px-14 py-3 px-9 bg-transparent border-[#3DCBB4] outline-none border-[1px] rounded-[10px] font-medium">Masuk</a>
                     </div>
                 </div>
                 <div class="basis-[45%] relative">
@@ -125,7 +126,7 @@
                     <div class="w-[25px] h-[25px] bg-[#2AA7D6] rounded-[50%]"></div>
                     <div class="w-[25px] h-[25px] bg-[#2AA7D6] rounded-[50%]"></div>
                 </div>
-                <a href="/service" class="flex items-center text-[110%] gap-1 py-2 px-5 border-[#2AA7D6] border-1 border rounded-[50px]">Tentang Kami <img src="asset/image/arrow.svg" width="25px" alt=""></a>
+                <a href="/layanan" class="flex items-center text-[110%] gap-1 py-2 px-5 border-[#2AA7D6] border-1 border rounded-[50px]">Layanan <img src="asset/image/arrow.svg" width="25px" alt=""></a>
             </div>
         </div>
     </section>
@@ -166,45 +167,21 @@
             </form>
         </div>
     </section>
-    <footer class="lg:h-[335px] w-full bg-[#0A2647] font-poppins font-light text-white rounded-[15px] relative" id="footer">
-            <div class="container p-6 m-auto grid place-items-center h-[90%]">
-                <div class="flex flex-col lg:flex-row items-start h-fit  w-full gap-[15px] text-[14.5px]">
-                    <div class=" basis-[55%] lg:text-center">
-                        <h1 class="text-[24px] font-bold">Blind Stick</h1>
-                        <p class="">
-                        "Tetap terhubung dengan kami, Blind Stick 2024 . Temukan lebih banyak tentang komitmen kami dalam 'Mengembangkan Teknologi Inklusif dan Meningkatkan Aksesibilitas.' Jangan ragu untuk berkontribusi dan bersama-sama kita wujudkan visi 'Inklusivitas melalui Teknologi'."
-                        </p>
-                    </div>
-                    <div class=" basis-[23%] lg:ml-[10%] lg:pl-12">
-                        <h1 class="text-[24px] font-bold">Kontak</h1>
-                        <p>blindStickOfficial@gmail.com</p>
-                        <p>telegram.me/ydhrizqi</p>
-                    </div>
-                    <div class=" basis-[13%] ">
-                        <h1 class="text-[24px] font-bold">Terhubung</h1>
-                        <p>blindStick</p>
-                        <p>@blindStick</p>
-                        <p>blindStick</p>
-                    </div>
-                </div>
-            </div>
-            <div class="container m-auto lg:h-[10%] flex lg:items-center">
-                <div class="h-[5%] lg:h-[10%] bg-[#0d233d] w-full absolute left-0 bottom-0"></div>
-                <p class=" lg:pl-28 font-roboto font-light text-[11.25px] text-opacity-[80%]  z-10">Made with ❤️ by Human on Earth</p>
-            </div>
-        </footer>
+    
+    <!-- Footer -->
+    @include('component.footer')
         
-        <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
-        <script>
-            // window.onscroll = () => {
-			// 	const nav = document.querySelector('#navBar');
-			// 	if(this.scrollY <= 10){
-			// 		nav.className = 'text-slate-400 bg-transparent transition ease-in-out delay-200   w-full fixed text-slate-200 bg-opacity-80 backdrop-blur-md lg-bg-transparent z-50';
-			// 	}else{
-			// 		nav.className = 'text-slate-400 bg-[#215695] bg-opacity-80 backdrop-blur-md transition ease-in-out delay-200 w-full fixed text-slate-200 bg-transparent z-50';
-			// 	} 
-			// };
-        </script>
+    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+    <script>
+        // window.onscroll = () => {
+        // 	const nav = document.querySelector('#navBar');
+        // 	if(this.scrollY <= 10){
+        // 		nav.className = 'text-slate-400 bg-transparent transition ease-in-out delay-200   w-full fixed text-slate-200 bg-opacity-80 backdrop-blur-md lg-bg-transparent z-50';
+        // 	}else{
+        // 		nav.className = 'text-slate-400 bg-[#215695] bg-opacity-80 backdrop-blur-md transition ease-in-out delay-200 w-full fixed text-slate-200 bg-transparent z-50';
+        // 	} 
+        // };
+    </script>
 </body>
 
 </html>

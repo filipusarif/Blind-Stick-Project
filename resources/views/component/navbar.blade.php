@@ -1,22 +1,7 @@
-<!doctype html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/asset/image/titleLogo.png" type="image/x-icon">
-    <title>Blind Stick</title>
-    @vite('resources/css/app.css')
-    <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
-    
-</head>
-
-<body class="bg-slate-900">
-    <!-- navbar -->
-    <nav class="bg-[#215695] bg-opacity-70 backdrop-blur-md fixed w-full z-50 h-[50px] grid place-items-center" id="" >
+<nav class="bg-[#215695] bg-opacity-70 backdrop-blur-md fixed w-full z-50 h-[50px] grid place-items-center" id="" >
         <div class="container bg-[#215695] bg-opacity-70 lg:bg-transparent">
             <div class="bg-transparent w-full flex flex-wrap  items-center justify-between px-4 mx-auto">
-                <a href="/" class="flex items-center">
+                <a href="#" class="flex items-center">
                     <img src="asset\image\logoBS.png" class="h-6 mr-3 sm:h-9" alt="Blind Stick Logo">
                 </a>
                 <div class="flex items-center lg:hidden lg:order-2 ">
@@ -42,16 +27,15 @@
                 </div>
                 <div class="items-center justify-between w-full lg:flex lg:w-auto lg:order-1 " id="mobile-menu-2">
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                        
                         <li>
                             <a href="/"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Beranda</a>
+                                class="block py-2 pl-3 pr-4 ext-slate-200 bg-[#00d9ff] rounded lg:bg-transparent  text-slate-100 lg:p-0 dark:ext-slate-200"
+                                aria-current="page">Beranda</a>
                         </li>
                         <li>
-                            <a href="/layanan"
+                            <a href="/service"
                                 class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Layanan</a>
                         </li>
-                        
                         <li>
                             <a href="/bantuan"
                                 class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Bantuan</a>
@@ -65,16 +49,3 @@
             </div>
         </div>
     </nav>
-
-    <section class=" text-slate-200 bg-gradient-to-tr grid place-items-center  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
-        <h1 class="font-bold text-[200%]">Halaman dalam proses pengembangan❤️</h1>
-    </section>
-
-    <!-- Footer -->
-    @include('component.footer')
-
-    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
-
-</body>
-
-</html>
