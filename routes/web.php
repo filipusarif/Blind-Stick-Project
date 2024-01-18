@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataIot;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\RegisterController;
+use GuzzleHttp\Middleware;
+// use App\Http\Controllers\LayananController;
+use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,41 +21,34 @@ use App\Http\Controllers\DataIot;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
-Route::get('/', function () {
-    return view('home');
-});
+// Authentication Routes
 
-Route::get('/masuk', function () {
-    return view('login');
-});
+// Home
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/daftar', function () {
-    return view('signin');
-});
 
-Route::get('/layanan', function () {
-    return view('service');
-});
-Route::get('/bantuan', function () {
-    return view('bantuan');
-});
-Route::get('/riwayat', function () {
-    return view('riwayat');
-});
-Route::get('/navigasi', function () {
-    return view('navigasi');
-});
-Route::get('/pengguna', function () {
-    return view('user');
-});
-// Route::get('/bacaSensor', function () {
-//     return view('bacaSensor');
-// });
+// LOGIN
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+//REGISTER
+Route::get('daftar', [RegisterController::class, 'register'])->name('register');
+Route::post('daftar/action', [RegisterController::class, 'actionregister'])->name('actionregister');
 
 Route::get('/bacaSensor',[DataIot::class,'bacaObj']);
 Route::get('/bacaJarak',[DataIot::class,'bacaJarak']);
 
 Route::get('/api/{object}/{jarak}/{sos}', [DataIot::class, 'simpanSensor']);
+
+Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
+Route::get('/bantuan', [HomeController::class, 'bantuan'])->name('bantuan');
+Route::get('/riwayat', [HomeController::class, 'riwayat'])->name('riwayat');
+Route::get('/navigasi', [HomeController::class, 'navigasi'])->name('navigasi');
+Route::get('/pengguna', [HomeController::class, 'pengguna'])->name('pengguna');
+
 
 

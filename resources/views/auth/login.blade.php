@@ -66,8 +66,29 @@
         </div>
     </nav>
 
-    <section class=" text-slate-200 bg-gradient-to-tr grid place-items-center  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
+    <!-- <section class=" text-slate-200 bg-gradient-to-tr grid place-items-center  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
         <h1 class="font-bold text-[200%]">Halaman dalam proses pengembangan❤️</h1>
+    </section> -->
+    <section class=" text-slate-200 bg-gradient-to-tr grid place-items-center  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
+        @if(session('error'))
+            <div class="alert alert-danger">
+                <b>Opps!</b> {{session('error')}}
+            </div>
+        @endif
+        <form action="{{ url('login-proses') }}" method="post">
+            @csrf
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" required="">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" required="">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+            <hr>
+            <p class="text-center">Belum punya akun? <a href="#">Register</a> sekarang!</p>
+        </form>
     </section>
 
     <!-- Footer -->
