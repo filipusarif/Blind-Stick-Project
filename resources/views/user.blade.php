@@ -13,52 +13,31 @@
 
 <body class="bg-slate-900">
     <!-- navbar -->
-    <nav class="bg-[#215695] bg-opacity-70 backdrop-blur-md fixed w-full z-50 h-[50px] grid place-items-center" id="" >
-        <div class="container bg-[#215695] bg-opacity-70 lg:bg-transparent">
-            <div class="bg-transparent w-full flex flex-wrap  items-center justify-between px-4 mx-auto">
-                <a href="/" class="flex items-center">
-                    <img src="asset\image\logoBS.png" class="h-6 mr-3 sm:h-9" alt="Blind Stick Logo">
+    <nav class=" border-gray-200 dark:bg-[#215695] dark:md:bg-transparent bg-[#215695] dark:bg-opacity-60   fixed w-full z-50" id="navBar">
+        <div class="container">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="asset\image\logoBS.png" class="h-8" alt="Blind StickLogo" />
                 </a>
-                <div class="flex items-center lg:hidden lg:order-2 ">
-                    <div class="hidden mt-2 mr-4 sm:inline-block">
-                        <span></span>
-                    </div>
-    
-                    <button data-collapse-toggle="mobile-menu-2" type="button"
-                        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        aria-controls="mobile-menu-2" aria-expanded="true">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="items-center justify-between w-full lg:flex lg:w-auto lg:order-1 " id="mobile-menu-2">
-                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                        
+                <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-[#122F58] dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border  rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-[#122F58] md:dark:bg-transparent dark:border-[#1364c0]">
                         <li>
-                            <a href="/"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Beranda</a>
+                            <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-[#cacaca] md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:bg-opacity-20 dark:hover:text-white md:dark:hover:bg-transparent group transition duration-300 ">Beranda<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white text-white"></a>
                         </li>
                         <li>
-                            <a href="/layanan"
-                                class="block py-2 pl-3 pr-4 ext-slate-200 bg-[#00d9ff] rounded lg:bg-transparent  text-slate-100 lg:p-0 dark:ext-slate-200"
-                                aria-current="page">Layanan</a>
+                            <a href="/layanan" class="block py-2 px-3 text-[#EEE] bg-[#00d9ff] rounded md:bg-transparent md:text-[#00d9ff] md:p-0 dark:text-white md:dark:text-[#00d9ff] group transition duration-300" aria-current="page">Layanan<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#00d9ff] text-white"></a>
                         </li>
                         <li>
-                            <a href="/bantuan"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Bantuan</a>
+                            <a href="/bantuan" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-[#cacaca] md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:bg-opacity-20 dark:hover:text-white md:dark:hover:bg-transparent group transition duration-300 ">Bantuan<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white text-white"></a>
                         </li>
                         <li>
-                            <a href="/"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Kontak</a>
+                            <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-[#cacaca] md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:bg-opacity-20 dark:hover:text-white md:dark:hover:bg-transparent group transition duration-300 ">Kontak<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white text-white"></a>
                         </li>
                     </ul>
                 </div>
@@ -74,7 +53,16 @@
     @include('component.footer')
 
     <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
-
+    <script>
+        window.onscroll = () => {
+        	const nav = document.querySelector('#navBar');
+        	if(this.scrollY <= 10){
+        		nav.className = 'transition ease-in-out delay-200  border-gray-200 dark:bg-[#215695] dark:md:bg-transparent bg-[#215695] dark:bg-opacity-60   fixed w-full z-50';
+        	}else{
+        		nav.className = 'transition ease-in-out delay-200  border-gray-200 dark:bg-[#215695] bg-[#215695] dark:bg-opacity-60 backdrop-blur-md   fixed w-full z-50';
+        	} 
+        };
+    </script>
 </body>
 
 </html>

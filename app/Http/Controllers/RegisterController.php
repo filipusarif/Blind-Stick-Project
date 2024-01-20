@@ -17,14 +17,21 @@ class RegisterController extends Controller
     public function actionregister(Request $request)
     {
         $user = User::create([
-            'groups'=> '1',
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
+            'groups'=> $request -> emailPengguna,
+            'email' => $request->emailPengguna,
+            'username' => $request->usernamePengguna,
+            'password' => Hash::make($request->passwordPengguna),
+            'role' => $request->rolePengguna,
+        ]);
+        $user = User::create([
+            'groups'=> $request -> emailPengguna,
+            'email' => $request->emailPenjaga,
+            'username' => $request->usernamePenjaga,
+            'password' => Hash::make($request->passwordPenjaga),
+            'role' => $request->rolePenjaga,
         ]);
 
         // Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
-        return redirect('/masuk');
+        return redirect('/');
     }
 }

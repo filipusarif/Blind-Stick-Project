@@ -11,91 +11,80 @@
     
 </head>
 
-<body class="bg-slate-900">
-    <!-- navbar -->
-    <nav class="bg-[#215695] bg-opacity-70 backdrop-blur-md fixed w-full z-50 h-[50px] grid place-items-center" id="" >
-        <div class="container bg-[#215695] bg-opacity-70 lg:bg-transparent">
-            <div class="bg-transparent w-full flex flex-wrap  items-center justify-between px-4 mx-auto">
-                <a href="/" class="flex items-center">
-                    <img src="asset\image\logoBS.png" class="h-6 mr-3 sm:h-9" alt="Blind Stick Logo">
-                </a>
-                <div class="flex items-center lg:hidden lg:order-2 ">
-                    <div class="hidden mt-2 mr-4 sm:inline-block">
-                        <span></span>
+<body class="bg-[#215695] font-poppins ">
+    <nav class="fixed z-50 flex items-center justify-between w-full h-[50px] px-[3rem] lg:mt-6">
+        <a href="/"><img src="asset/image/logoLogin.svg" alt="Blind Stick Logo" class="lg:w-[90px] w-[70px]" ></a>
+        <a href="/" class="lg:block hidden"><img src="asset/image/homeLogin.svg" alt="Home" width="40px"></a>
+    </nav>
+    @if(session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+    </div>
+    @endif
+    <section class="flex lg:flex-row flex-col bg-white items-center text-[#6C6C6C] lg:bg-gradient-to-tr lg:from-[#071a30] lg:via-[#215695] lg:via-80% lg:to-[#215695] overflow-hidden h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
+        <div class="lg:h-full h-screen w-full  basis-[100%] lg:basis-[40%] bg-white px-[2rem] lg:px-[3rem]">
+            <div class="h-full lg:w-[90%] w-full mx-auto flex flex-col items-center justify-center">
+                <h1 class="text-[250%] font-extrabold text-[#215695] mt-5">Masuk</h1>
+                <form action="{{route('actionregister')}}" method="post" class="min-h-[20%] w-full mt-1">
+                    @csrf
+                    <div class="h-full w-full">
+                        <div class="relative mt-2 w-full">
+                            <input type="email" id="emailID" name="email" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2   transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
+                            <label for="emailID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Masukkan Email </label>
+                        </div>
+                        <div class="relative mt-6 w-full">
+                            <input type="password" id="passwordID" name="password" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2 transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
+                            <label for="passwordID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Masukkan Kata Sandi </label>
+                        </div>
+                        <button type="submit" class="cursor-pointer w-fit lg:py-1.5 lg:px-7 py-2 px-7 bg-[#215695] rounded-[10px] font-medium text-white mt-7">Masuk</button>
                     </div>
-    
-                    <button data-collapse-toggle="mobile-menu-2" type="button"
-                        class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        aria-controls="mobile-menu-2" aria-expanded="true">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="items-center justify-between w-full lg:flex lg:w-auto lg:order-1 " id="mobile-menu-2">
-                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                        
-                        <li>
-                            <a href="/"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Beranda</a>
-                        </li>
-                        <li>
-                            <a href="/layanan"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Layanan</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/bantuan"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Bantuan</a>
-                        </li>
-                        <li>
-                            <a href="/"
-                                class="block py-2 pl-3 pr-4 text-gray-400 border-b border-gray-100 hover:bg-transparent lg:hover:bg-transparent lg:border-0 lg:hover:text-slate-40 lg:p-0 dark:text-gray-300 lg:dark:hover:ext-slate-200 dark:hover:bg-[#287de6]  dark:hover:ext-slate-200 lg:dark:hover:bg-transparent dark:border-gray-700">Kontak</a>
-                        </li>
-                    </ul>
+                </form>
+
+                <p class="mt-8">Belum punya akun? <a href="/daftar" class="text-blue-500 font-medium">Daftar</a> proses ini hanya memerlukan waktu singkat.</p>
+                <a href="" class="text-blue-500 font-medium">lupa password?</a>
+                <div class="flex  mt-28 gap-2 justify-start w-full">
+                    <a href=""><img src="asset/image/githubLogin.svg" alt="github" width="35px"></a>
+                    <a href=""><img src="asset/image/whatsappLogin.svg" alt="whatsapp" width="35px"></a>
+                    <a href=""><img src="asset/image/instagramLogin.svg" alt="instagram" width="35px"></a>
                 </div>
             </div>
         </div>
-    </nav>
+        <div class="lg:h-full hidden md:grid place-items-center basis-[60%]">
+            <img src="asset/image/vectorLogin.svg" alt="vector">
+            <div class="-mt-[25%] text-white">
+                <h1 class="text-[300%] font-bold">Welcome to Blind Stick!</h1>
+                <p class="text-[150%]">Dapatkan Pengalaman Lebih Baik</p>
+            </div>
+        </div>
 
-    <!-- <section class=" text-slate-200 bg-gradient-to-tr grid place-items-center  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
-        <h1 class="font-bold text-[200%]">Halaman dalam proses pengembangan❤️</h1>
-    </section> -->
-    <section class=" text-slate-200 bg-gradient-to-tr grid place-items-center  from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 pt-10 px-5">
-        @if(session('error'))
-            <div class="alert alert-danger">
-                <b>Opps!</b> {{session('error')}}
-            </div>
-        @endif
-        <form action="{{ url('login-proses') }}" method="post">
-            @csrf
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email" required="">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Password" required="">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Log In</button>
-            <hr>
-            <p class="text-center">Belum punya akun? <a href="#">Register</a> sekarang!</p>
-        </form>
     </section>
 
-    <!-- Footer -->
-    @include('component.footer')
-
     <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+    <script>
+        const pengguna = document.querySelector('#pengguna');
+        const penjaga = document.querySelector('#penjaga');
+        const nextButton = document.querySelector('#nextButton');
+        const backButton = document.querySelector('#backButton');
 
+        nextButton.addEventListener('click', function() {
+            pengguna.style.display = "none";
+            penjaga.style.display = "block";
+        });
+
+        backButton.addEventListener('click', function() {
+            pengguna.style.display = "block";
+            penjaga.style.display = "none";
+        });
+
+        function checkInputNotEmpty(input) {
+            const label = input.nextElementSibling;
+            if (input.value.trim() !== '') {
+                label.classList.add('text-xs', 'text-[#215695]', '-top-4');
+            } else {
+                label.classList.remove('text-xs', 'text-[#215695]', '-top-4');
+            }
+        }
+    </script>
 </body>
 
 </html>

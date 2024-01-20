@@ -21,16 +21,17 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Auth::routes();
 
 // Authentication Routes
+Auth::routes();
+
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 // LOGIN
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/masuk', [LoginController::class, 'index'])->name('login');
 Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -39,11 +40,12 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('daftar', [RegisterController::class, 'register'])->name('register');
 Route::post('daftar/action', [RegisterController::class, 'actionregister'])->name('actionregister');
 
+// Iot
 Route::get('/bacaSensor',[DataIot::class,'bacaObj']);
 Route::get('/bacaJarak',[DataIot::class,'bacaJarak']);
-
 Route::get('/api/{object}/{jarak}/{sos}', [DataIot::class, 'simpanSensor']);
 
+// PAGE ROUTE
 Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
 Route::get('/bantuan', [HomeController::class, 'bantuan'])->name('bantuan');
 Route::get('/riwayat', [HomeController::class, 'riwayat'])->name('riwayat');

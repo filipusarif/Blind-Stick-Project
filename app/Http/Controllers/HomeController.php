@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
   
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->only(['layanan', 'bantuan', 'riwayat', 'navigasi', 'pengguna']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->only(['layanan', 'bantuan', 'riwayat', 'navigasi', 'pengguna']);
+    // }
 
     public function index()
     {
