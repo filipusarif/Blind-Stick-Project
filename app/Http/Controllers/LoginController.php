@@ -4,32 +4,53 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        return view('auth.login', [
+            'title' => 'Login'
+        ]);
     }
 
-    public function login_proses(Request $request)
+    public function login_proses(Request $request): RedirectResponse
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->validate([
+            'email' => ['required'],
+            'password' => ['required'],
+        ]);
 
         if (Auth::attempt($credentials)) {
-            // Authentication passed
-            return redirect()->route('layanan');
+            $request->session()->regenerate();
+
+            $userRole = $request->user()->role;
+
+            if ($userRole === 'pengguna') {
+                dd([
+                    'authenticated' => Auth::user(),
+            ]);
+            } elseif ($userRole === 'penjaga') {
+                dd([
+                    'authenticated' => Auth::user(),
+            ]);
+            }
         }
 
-        // Authentication failed
-        return back()->withErrors(['email' => 'Invalid credentials']);
+        return back()->with([
+            'loginError' => 'Email and password do not match.',
+        ])->onlyInput('email');
     }
 
-    public function logout()
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
-        return redirect()->route('login');
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect('/');
     }
 }

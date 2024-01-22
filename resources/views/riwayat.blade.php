@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/asset/image/titleLogo.png" type="image/x-icon">
     <title>Blind Stick</title>
     @vite('resources/css/app.css')
+    @include('component/scrollbar')
     <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
     
 </head>

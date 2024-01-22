@@ -25,7 +25,7 @@
         <div class="lg:h-full h-screen w-full  basis-[100%] lg:basis-[40%] bg-white px-[2rem] lg:px-[3rem]">
             <div class="h-full lg:w-[90%] w-full mx-auto flex flex-col items-center justify-center">
                 <h1 class="text-[250%] font-extrabold text-[#215695] mt-5">Masuk</h1>
-                <form action="{{route('actionregister')}}" method="post" class="min-h-[20%] w-full mt-1">
+                <form action="{{route('login-proses')}}" method="post" class="min-h-[20%] w-full mt-1">
                     @csrf
                     <div class="h-full w-full">
                         <div class="relative mt-2 w-full">
@@ -37,6 +37,7 @@
                             <label for="passwordID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Masukkan Kata Sandi </label>
                         </div>
                         <button type="submit" class="cursor-pointer w-fit lg:py-1.5 lg:px-7 py-2 px-7 bg-[#215695] rounded-[10px] font-medium text-white mt-7">Masuk</button>
+                        
                     </div>
                 </form>
 

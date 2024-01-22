@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blind Stick</title>
     <link rel="icon" href="/asset/image/titleLogo.ico">
-    @include('tailwind/config')
+    <!-- @include('tailwind/config') -->
+    @vite('resources/css/app.css')
+    @include('component/scrollbar')
 </head>
 
 <body class=" bg-slate-900 font-poppins">

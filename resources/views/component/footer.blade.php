@@ -10,7 +10,7 @@
             <div class=" basis-[23%] lg:ml-[10%] lg:pl-12">
                 <h1 class="text-[24px] font-bold">Kontak</h1>
                 <p>blindStickOfficial@gmail.com</p>
-                <p>telegram.me/ydhrizqi</p>
+                <p>telegram.me/Filpph</p>
             </div>
             <div class=" basis-[13%] ">
                 <h1 class="text-[24px] font-bold">Terhubung</h1>

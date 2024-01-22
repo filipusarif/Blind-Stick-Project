@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RiwayatController;
 use GuzzleHttp\Middleware;
 // use App\Http\Controllers\LayananController;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // Authentication Routes
-Auth::routes();
+// Auth::routes();
 
 
 // Home
@@ -31,26 +32,34 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 // LOGIN
-Route::get('/masuk', [LoginController::class, 'index'])->name('login');
-Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
 
 
 //REGISTER
-Route::get('daftar', [RegisterController::class, 'register'])->name('register');
-Route::post('daftar/action', [RegisterController::class, 'actionregister'])->name('actionregister');
+
 
 // Iot
-Route::get('/bacaSensor',[DataIot::class,'bacaObj']);
-Route::get('/bacaJarak',[DataIot::class,'bacaJarak']);
+Route::get('/bacaSensor', [DataIot::class, 'bacaObj']);
+Route::get('/bacaJarak', [DataIot::class, 'bacaJarak']);
 Route::get('/api/{object}/{jarak}/{sos}', [DataIot::class, 'simpanSensor']);
 
 // PAGE ROUTE
-Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
-Route::get('/bantuan', [HomeController::class, 'bantuan'])->name('bantuan');
-Route::get('/riwayat', [HomeController::class, 'riwayat'])->name('riwayat');
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('daftar', [RegisterController::class, 'register'])->name('register');
+    Route::post('daftar/action', [RegisterController::class, 'actionregister'])->name('actionregister');
+    Route::get('/masuk', [LoginController::class, 'index'])->name('login');
+    Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+});
+
 Route::get('/navigasi', [HomeController::class, 'navigasi'])->name('navigasi');
-Route::get('/pengguna', [HomeController::class, 'pengguna'])->name('pengguna');
+Route::post('/simpan-data', [RiwayatController::class, 'saveLocation']);
 
-
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
+    Route::get('/bantuan', [HomeController::class, 'bantuan'])->name('bantuan');
+    Route::get('/riwayat', [HomeController::class, 'riwayat'])->name('riwayat');
+    Route::get('/pengguna', [HomeController::class, 'pengguna'])->name('pengguna');
+});
 

@@ -8,7 +8,6 @@
     <title>Blind Stick</title>
     @vite('resources/css/app.css')
     <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
-
 </head>
 
 <body class="bg-[#215695] font-poppins ">
