@@ -115,7 +115,6 @@
             // Buat objek FormData dan tambahkan data yang ingin Anda kirim
             var formData = new FormData();
             formData.append('name', name);
-            console.log(coords.lat);
 
             // Kirim data ke server menggunakan AJAX
             $.ajaxSetup({
@@ -137,7 +136,9 @@
                     console.log(result);
                 }
             });
-
+            if(audioStatus = true){
+                speak("Rute Menuju " + name);
+            }
             setInterval(() => {
                 if (statusUser === false) {
                     if (routingControl) {
@@ -203,7 +204,8 @@
             speech.text = voice;
             speech.lang = 'id-ID';
             // Use the default speech synthesizer
-            window.speechSynthesis.speak(speech);
+            var speechSynthesis = window.speechSynthesis;
+            speechSynthesis.speak(speech);
         }
 
         
@@ -214,6 +216,7 @@
 
         function nonActiveSound(){
             audioStatus = false;
+            speechSynthesis.cancel();
         }
 
         function getPosition(position) {

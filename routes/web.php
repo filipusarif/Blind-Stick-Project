@@ -10,6 +10,7 @@ use App\Http\Controllers\RiwayatController;
 use GuzzleHttp\Middleware;
 // use App\Http\Controllers\LayananController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 // use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,13 +54,15 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 Route::get('/navigasi', [HomeController::class, 'navigasi'])->name('navigasi');
+Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
 Route::post('/simpan-data', [RiwayatController::class, 'saveLocation']);
+Route::get('/bantuan', [HomeController::class, 'bantuan'])->name('bantuan');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
-    Route::get('/bantuan', [HomeController::class, 'bantuan'])->name('bantuan');
-    Route::get('/riwayat', [HomeController::class, 'riwayat'])->name('riwayat');
     Route::get('/pengguna', [HomeController::class, 'pengguna'])->name('pengguna');
 });
+
+Route::post('/handle-form', [DataIot::class, 'sendToESP32']);
 

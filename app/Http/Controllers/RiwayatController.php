@@ -8,6 +8,14 @@ use Illuminate\Encryption\Encrypter;
 
 class RiwayatController extends Controller
 {
+    public function index(){
+        $users = Riwayat::all();
+        foreach ($users as $user){
+            $user -> nama = decrypt($user -> nama);
+        }
+        return view('riwayat',['riwayat' => $users]);
+    }
+
     public function saveLocation(Request $request)
     {
 
