@@ -40,6 +40,6 @@ class HomeController extends Controller
     public function pengguna()
     {
         $user = auth()->user();
-        return view('pengguna');
+        return view('user');
     }
 }

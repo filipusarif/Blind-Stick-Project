@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -68,5 +69,31 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function register()
+    {
+        return view('signin');
+    }
+
+    public function actionregister(Request $request)
+    {
+        $user = User::create([
+            'groups' => $request->emailPengguna,
+            'email' => $request->emailPengguna,
+            'username' => $request->usernamePengguna,
+            'password' => Hash::make($request->passwordPengguna),
+            'role' => $request->rolePengguna,
+        ]);
+        $user = User::create([
+            'groups' => $request->emailPengguna,
+            'email' => $request->emailPenjaga,
+            'username' => $request->usernamePenjaga,
+            'password' => Hash::make($request->passwordPenjaga),
+            'role' => $request->rolePenjaga,
+        ]);
+
+        // Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
+        return redirect('/');
     }
 }

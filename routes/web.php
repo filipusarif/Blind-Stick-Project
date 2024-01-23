@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataIot;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RegisterController;
@@ -43,6 +43,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/bacaSensor', [DataIot::class, 'bacaObj']);
 Route::get('/bacaJarak', [DataIot::class, 'bacaJarak']);
 Route::get('/api/{object}/{jarak}/{sos}', [DataIot::class, 'simpanSensor']);
+Route::post('/simpan-data', [RiwayatController::class, 'saveLocation']);
+
 
 // PAGE ROUTE
 Route::group(['middleware' => ['guest']], function () {
@@ -50,19 +52,18 @@ Route::group(['middleware' => ['guest']], function () {
     Route::post('daftar/action', [RegisterController::class, 'actionregister'])->name('actionregister');
     Route::get('/masuk', [LoginController::class, 'index'])->name('login');
     Route::post('/login-proses', [LoginController::class, 'login_proses'])->name('login-proses');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::get('/navigasi', [HomeController::class, 'navigasi'])->name('navigasi');
-Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
-Route::post('/simpan-data', [RiwayatController::class, 'saveLocation']);
-Route::get('/bantuan', [HomeController::class, 'bantuan'])->name('bantuan');
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/navigasi', [HomeController::class, 'navigasi'])->name('navigasi');
+    Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
+    Route::get('/bantuan', [HomeController::class, 'bantuan'])->name('bantuan');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
     Route::get('/pengguna', [HomeController::class, 'pengguna'])->name('pengguna');
 });
+
 
 Route::post('/handle-form', [DataIot::class, 'sendToESP32']);
 

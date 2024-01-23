@@ -27,7 +27,6 @@
                 <form action="{{route('actionregister')}}" method="post" class="min-h-[30%] w-full mt-1">
                     @csrf
                     <div id="pengguna" class="h-full w-full">
-                        <!-- <p>Masukkan data Pengguna Blind Stick</p> -->
                         <div class="relative mt-2 w-full">
                             <input type="email" id="emailPenggunaID" name="emailPengguna" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2   transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
                             <label for="emailPenggunaID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Email Pengguna</label>
@@ -44,7 +43,6 @@
                         <div id="nextButton" class="cursor-pointer w-fit lg:py-1.5 lg:px-7 py-2 px-7 bg-[#215695] rounded-[10px] font-medium text-white mt-9" >lanjut</div>
                     </div>
                     <div class="hidden h-full w-full" id="penjaga">
-                        <!-- <p>Masukkan data Penjaga Blind Stick</p> -->
                         <div class="relative mt-2 w-full">
                             <input type="email" id="emailPenjagaID" name="emailPenjaga" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2   transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
                             <label for="emailPenjagaID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Email Penjaga</label>
