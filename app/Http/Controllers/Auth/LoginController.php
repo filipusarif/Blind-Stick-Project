@@ -61,9 +61,9 @@ class LoginController extends Controller
             $userRole = $request->user()->role;
 
             if ($userRole === 'pengguna') {
-                return redirect('/layanan');
+                return redirect('/');
             } elseif ($userRole === 'penjaga') {
-                return redirect('/layanan');
+                return redirect('/');
             }
         }
 

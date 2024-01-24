@@ -10,6 +10,7 @@
     @vite('resources/css/app.css')
     @include('component/scrollbar')
     <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
+    
 </head>
 
 <body class="bg-slate-900">
@@ -22,20 +23,29 @@
         </div>
 
         <div class="container min-h-[80vh] mx-auto pt-[3%] pb-5 relative">
-            <h1 class="text-[200%] text-center font-extrabold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Bantuan</h1>
+            <h1 class="text-[200%] text-center font-extrabold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Bantuan Penjaga</h1>
             <p class="text-center -mt-2 mb-4">Sedia Setiap Saat, dalam keadaan darurat</p>
             <div class="flex lg:flex-row flex-col-reverse items-center justify-center min-h-[80vh]  gap-3">
                 <div class=" flex flex-col basis-[70%] gap-5  w-full h-full lg:h-[80vh] ">
                     <div class="lg:basis-[70%]  h-[700px] lg:h-auto bg-[#173865] flex flex-col lg:flex-row justify-center items-center rounded-[20px]">
                         <div class="lg:w-[50%] w-full h-[400px] lg:h-full text-center lg:border-r-[4px] border-[#122F58]">
-                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tl-[10px] grid place-items-center text-[200%] font-bold">Respon</h1>
+                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tl-[10px] grid place-items-center text-[200%] font-bold">Status</h1>
                             <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="obj">Aman</p>
                         </div>
                         <div class="lg:w-[50%] w-full h-auto  lg:h-full text-center">
                             <h1 class="w-full h-[30%] bg-[#122F58] rounded-tr-[10px] grid place-items-center text-[200%] font-bold">Kirim Signal</h1>
                             <form action="{{url('bantuan-signal')}}" method="post" class=" h-[250px] flex items-center flex-col gap-5 justify-center pb-5">
                                 @csrf
-                                <button type="submit" class="text-right py-3 px-14 bg-[#3DCBB4] rounded-[30px] font-medium">Bantuan</button>
+                                <select name="signalName" id="signal" class="bg-[#1C4B83] py-2 px-3 rounded-[37px] border-1 border-[#2AA7D6] border outline-none text-[120%]">
+                                    <option value="1">Segera Datang</option>
+                                    <option value="2">Nanti Kesana</option>
+                                    <option value="3">Tidak Bisa Sekarang</option>
+                                    <option value="4">Maaf, Tidak Bisa</option>
+                                </select>
+                                <input type="hidden" name="id" value="esp32_01">
+                                <!-- <input type="text" name="signalName" id="signal" class="bg-[#1C4B83] py-2 px-3 rounded-[37px] border-1 border-[#2AA7D6] border outline-none"> -->
+                                <button type="submit" class="text-right py-3 px-14 bg-[#3DCBB4] rounded-[30px] font-medium">Kirim</button>
+                                <!-- <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="jarak" >loading</p> -->
                             </form>
                         </div>
                     </div>
@@ -69,35 +79,36 @@
             }
         };
 
-        var nilaiSensor;
+        function submitForm() {
+        var formData = {
+            '_token': '{{ csrf_token() }}',
+            'signalName': document.getElementById('signal').value
+        };
 
-        $(document).ready(function() {
-            setInterval(function() {
-                $("#obj").load("{{ url('bacaSensor') }}", function(response, status, xhr) {
-                    if (status == "success") {
-                        nilaiSensor = response; // Nilai dari hasil bacaSensor
-                        // Lakukan sesuatu dengan nilaiSensor
-                        if (nilaiSensor === "ada" && (tempSensor !== nilaiSensor || countSensor >= 3) && audioStatus === true) {
-                            // Memainkan suara
-                            audioElement.play();
-                            countSensor = 0;
-                        } else if (nilaiSensor === "ada" && audioStatus === true) {
-                            countSensor++;
-                        }
-                        tempSensor = nilaiSensor;
-                        console.log("Nilai Sensor: " + nilaiSensor);
-                    }
-                });
+        // Convert the formData object to JSON
+        var jsonData = JSON.stringify(formData);
 
-                $("#jarak").load("{{ url('bacaJarak') }}", function(response, status, xhr) {
-                    if (status == "success") {
-                        var nilaiJarak = response; // Nilai dari hasil bacaJarak
-                        // Lakukan sesuatu dengan nilaiJarak
-                        console.log("Nilai Jarak: " + nilaiJarak);
-                    }
-                });
-            }, 2000);
-        });
+        // Create a new XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+
+        // Set up the request
+        xhr.open('POST', 'handle-form', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        // Set up the callback function for when the request completes
+        // xhr.onload = function () {
+        //     if (xhr.status >= 200 && xhr.status <script 300 ) {
+        //         // Request was successful
+        //         console.log(xhr.responseText);
+        //     } else {
+        //         // Request failed
+        //         console.error(xhr.statusText);
+        //     }
+        // };
+
+        // Send the JSON data
+        xhr.send(jsonData);
+    }
     </script>
 </body>
 

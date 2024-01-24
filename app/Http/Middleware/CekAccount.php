@@ -9,13 +9,22 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CekAccount
 {
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next, ...$roles)
     {
+        // Periksa apakah pengguna masuk
         if (!Auth::check()) {
-            return redirect('/masuk');
+            return redirect('/login');
         }
 
-        return $next($request);
+        // Periksa peran pengguna
+        $user = Auth::user();
+        
+        if (in_array($user->role, $roles)) {
+            return $next($request);
+        }
+
+        // Tindakan jika peran tidak sesuai
+        return redirect('/')->with('error', 'Anda tidak memiliki izin untuk mengakses halaman ini.');
     }
 }
 

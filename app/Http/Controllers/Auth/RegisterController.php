@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Bantu;
 
 class RegisterController extends Controller
 {
@@ -85,6 +86,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->passwordPengguna),
             'role' => $request->rolePengguna,
         ]);
+
         $user = User::create([
             'groups' => $request->emailPengguna,
             'email' => $request->emailPenjaga,
@@ -93,7 +95,14 @@ class RegisterController extends Controller
             'role' => $request->rolePenjaga,
         ]);
 
+        $bantu = Bantu::create([
+            'groups' => $request->emailPengguna,
+            'bantuan' => 0,
+            'pengguna' => $request->emailPengguna,
+            'penjaga' => $request->emailPenjaga,
+        ]);
+
         // Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
-        return redirect('/');
+        return redirect('/masuk');
     }
 }

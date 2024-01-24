@@ -5,7 +5,7 @@ use App\Http\Controllers\DataIot;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LayananController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RiwayatController;
 use GuzzleHttp\Middleware;
 // use App\Http\Controllers\LayananController;
@@ -30,13 +30,6 @@ use Illuminate\Support\Facades\Http;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-// LOGIN
-
-
-
-//REGISTER
 
 
 // Iot
@@ -65,5 +58,23 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-Route::post('/handle-form', [DataIot::class, 'sendToESP32']);
+Route::group(['middleware' => ['auth', 'cekAkun:penjaga']], function () {
+    Route::get('/bantuan-penjaga', [HomeController::class, 'bantuan_penjaga'])->name('bantuan_penjaga');
+    Route::get('/bantuan-penjaga-response', [HomeController::class, 'bantuan_penjaga'])->name('bantuan_penjaga');
+    Route::post('/bantuan-signal', [HomeController::class, 'bantuan_signal'])->name('bantuan_signal');
+
+});
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/pengguna', [HomeController::class, 'pengguna'])->name('pengguna');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
+
+Route::group(['middleware' => ['auth', 'cekAkun:pengguna']], function () {
+    Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
+    Route::get('/riwayat', [RiwayatController::class, 'index'])->name('riwayat');
+    Route::get('/navigasi', [HomeController::class, 'navigasi'])->name('navigasi');
+    Route::get('/bantuan-pengguna', [HomeController::class, 'bantuan'])->name('bantuan');
+});
 

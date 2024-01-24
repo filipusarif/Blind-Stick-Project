@@ -9,7 +9,7 @@
     <title>Blind Stick</title>
     @vite('resources/css/app.css')
     @include('component/scrollbar')
-    <!-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> -->
+    
     <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
 
 
