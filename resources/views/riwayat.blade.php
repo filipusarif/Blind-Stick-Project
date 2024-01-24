@@ -12,7 +12,7 @@
 
 </head>
 
-<body class="bg-slate-900">
+<body class="bg-slate-900 font-poppins">
     <!-- navbar -->
     @include('component/navbar')
 
@@ -21,7 +21,7 @@
             <img src="asset/image/kubus.svg" alt="" class="-left-56 -top-20 absolute opacity-50">
         </div>
 
-        <div class="container min-h-[80vh] mx-auto pt-[3%] pb-5 relative">
+        <div class="container min-h-[80vh] mx-auto lg:pt-[3%] pt-5 pb-5 relative">
             <h1 class="text-[200%] text-center font-extrabold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Riwayat</h1>
             <p class="text-center -mt-2 mb-4">Sedia Setiap Saat, dalam keadaan darurat</p>
             <div class="flex lg:flex-row flex-col-reverse items-center justify-center min-h-[80vh]  gap-3">
@@ -30,17 +30,17 @@
                         <table class=" w-full h-fit ">
                             <thead>
                                 <tr>
-                                    <td>No</td>
-                                    <td>Tempat</td>
-                                    <td>Waktu</td>
+                                    <td class="w-[4%] text-center bg-[#122F58] py-2">No</td>
+                                    <td class="w-[70%] text-center bg-[#122F58]">Tempat</td>
+                                    <td class="w-[26%] text-center bg-[#122F58]">Waktu</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($riwayat as $data)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td id="nama{{ $loop->index }}">{{ $data-> nama}}</td>
-                                    <td id="tanggal{{ $loop->index }}">{{ $data -> created_at }}</td>
+                                    <td class="w-[4%] text-center py-2 border-b-2 border-[#122F58]">{{ $loop->index + 1 }}</td>
+                                    <td id="nama{{ $loop->index }}" class="w-[70%] text-left py-2 px-1 border-b-2 border-[#122F58]">{{ $data-> nama}}</td>
+                                    <td id="tanggal{{ $loop->index }}" class="w-[26%] text-center py-2 px-1 border-b-2 border-[#122F58]">{{ $data -> created_at }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -55,8 +55,8 @@
                     </div>
                 </div>
                 <div class="lg:basis-[30%] w-full lg:h-[80vh] bg-[#173865] flex gap-5 p-5 items-center justify-center lg:flex-col flex-row rounded-[20px] h-full">
-                    <button class="basis-[50%] bg-[#122F58] p-4 rounded-[15px] drop-shadow-xl" id="tombolAktif" onclick="activeSound()"><img src="/asset/image/volumeUP.svg" alt="" width="150px"></button>
-                    <button class="basis-[50%] bg-[#122F58] p-4 rounded-[15px] drop-shadow-xl" id="tombolNonaktif" onclick="nonActiveSound()"><img src="/asset/image/volumeDown.svg" alt="" width="150px"></button>
+                    <button class="basis-[50%] bg-[#122F58] p-4 rounded-[15px] drop-shadow-xl lg:text-[100%] text-[114%]" id="tombolAktif" onclick="activeSound()"><img src="/asset/image/volumeUP.svg" alt="" width="150px">Suara Aktif</button>
+                    <button class="basis-[50%] bg-[#122F58] p-4 rounded-[15px] drop-shadow-xl" id="tombolNonaktif" onclick="nonActiveSound()"><img src="/asset/image/volumeDown.svg" alt="" width="150px">Suara Non-Aktif</button>
                 </div>
             </div>
         </div>
@@ -114,6 +114,10 @@
             audioStatus = false;
             speechSynthesis.cancel();
         }
+        document.getElementById('userButton').addEventListener('click', function() {
+            var userModal = document.getElementById('userModal');
+            userModal.classList.toggle('hidden');
+        });
     </script>
 </body>
 

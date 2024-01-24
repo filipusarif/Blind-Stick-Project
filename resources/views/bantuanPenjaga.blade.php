@@ -30,7 +30,7 @@
                     <div class="lg:basis-[70%]  h-[700px] lg:h-auto bg-[#173865] flex flex-col lg:flex-row justify-center items-center rounded-[20px]">
                         <div class="lg:w-[50%] w-full h-[400px] lg:h-full text-center lg:border-r-[4px] border-[#122F58]">
                             <h1 class="w-full h-[30%] bg-[#122F58] rounded-tl-[10px] grid place-items-center text-[200%] font-bold">Status</h1>
-                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="obj">Aman</p>
+                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="obj">Loading</p>
                         </div>
                         <div class="lg:w-[50%] w-full h-auto  lg:h-full text-center">
                             <h1 class="w-full h-[30%] bg-[#122F58] rounded-tr-[10px] grid place-items-center text-[200%] font-bold">Kirim Signal</h1>
@@ -79,36 +79,17 @@
             }
         };
 
-        function submitForm() {
-        var formData = {
-            '_token': '{{ csrf_token() }}',
-            'signalName': document.getElementById('signal').value
-        };
-
-        // Convert the formData object to JSON
-        var jsonData = JSON.stringify(formData);
-
-        // Create a new XMLHttpRequest
-        var xhr = new XMLHttpRequest();
-
-        // Set up the request
-        xhr.open('POST', 'handle-form', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        // Set up the callback function for when the request completes
-        // xhr.onload = function () {
-        //     if (xhr.status >= 200 && xhr.status <script 300 ) {
-        //         // Request was successful
-        //         console.log(xhr.responseText);
-        //     } else {
-        //         // Request failed
-        //         console.error(xhr.statusText);
-        //     }
-        // };
-
-        // Send the JSON data
-        xhr.send(jsonData);
-    }
+        $(document).ready(function() {
+            setInterval(function() {
+                $("#obj").load("{{ url('bacaSOS') }}", function(response, status, xhr) {
+                    console.log('succes');                                                  
+                });
+            }, 2000);
+        });
+        document.getElementById('userButton').addEventListener('click', function() {
+            var userModal = document.getElementById('userModal');
+            userModal.classList.toggle('hidden');
+        });
     </script>
 </body>
 

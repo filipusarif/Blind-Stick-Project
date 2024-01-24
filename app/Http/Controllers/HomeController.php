@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bantu;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Model_Iot;
+use App\Models\Kritik;
+
 
   
 class HomeController extends Controller
@@ -37,10 +40,38 @@ class HomeController extends Controller
 
     public function bantuan()
     {
-        $sensor = Bantu::select('*')->get();
+        if (Auth::check()) {
+            $groups = Auth::user()->groups;
+        }else{
+            $groups = 'a@gmail.com';
+        }
+        $status = Bantu::where('groups',$groups)->get();
         return view('bantuan');
     }
 
+    public function bacaBantuan(){
+        if (Auth::check()) {
+            $groups = Auth::user()->groups;
+        }else{
+            $groups = 'a@gmail.com';
+        }
+        $bantuan = Bantu::where('groups',$groups)->get();
+        return view('bacaBantuan', ['nilaiBantuan'=>$bantuan]);
+    }
+
+    public function okeBantuan(Request $request){
+        if (Auth::check()) {
+            $groups = Auth::user()->groups;
+        }else{
+            $groups = 'a@gmail.com';
+        }
+        Bantu::where('groups',$groups)->update(['bantuan'=>0, 'feedback'=>0]);
+        return redirect("/bantuan-pengguna");
+    }
+
+
+
+    // penjaga
     public function bantuan_signal(Request $request){
 
         if (Auth::check()) {
@@ -48,7 +79,7 @@ class HomeController extends Controller
         }else{
             $groups = 'a@gmail.com';
         }
-        Bantu::where('groups',$groups)->update(['bantuan'=>$request->signalName]);
+        Bantu::where('groups',$groups)->update(['feedback'=>$request->signalName, 'bantuan'=>1]);
         return redirect("/bantuan-penjaga");
     }
 
@@ -56,6 +87,16 @@ class HomeController extends Controller
     {
         $sensor = Bantu::select('*')->get();
         return view('bantuanPenjaga');
+    }
+
+    public function bacaSOS(){
+        if (Auth::check()) {
+            $kode = Auth::user()->kode;
+        }else{
+            $kode = 'a@gmail.com';
+        }
+        $SOS = Model_Iot::where('kode',$kode)->get();
+        return view('bacaSOS', ['nilaiSOS'=>$SOS]);
     }
     public function riwayat()
     {
@@ -70,6 +111,18 @@ class HomeController extends Controller
     public function pengguna()
     {
         $user = auth()->user();
-        return view('user');
+
+
+        return view('user',[
+            'user' => $user,
+        ]);
+    }
+
+    public function kritik(Request $request){
+        $user = Kritik::create([
+            'email'=> $request -> inputEmailKritik,
+            'kritik' => $request->inputKritik,
+        ]);
+        return redirect("/");
     }
 }

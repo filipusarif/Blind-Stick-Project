@@ -11,7 +11,7 @@
                 </svg>
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border  rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-[#122F58] md:dark:bg-transparent dark:border-[#1364c0]">
+                <ul class="font-medium flex flex-col lg:items-center p-4 md:p-0 mt-4 border  rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-[#122F58] md:dark:bg-transparent dark:border-[#1364c0]">
                     <li>
                         <a href="/" class="{{ Request::is('/') ? ' text-[#EEE] bg-[#00d9ff] rounded md:bg-transparent md:text-[#00d9ff] md:p-0 dark:text-white md:dark:text-[#00d9ff] group transition duration-300': ' text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-[#cacaca] md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:bg-opacity-20 dark:hover:text-white md:dark:hover:bg-transparent group transition duration-300 ' }} block py-2 px-3 " aria-current="page">Beranda<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 {{ Request::is('/') ? 'bg-[#00d9ff]' :'bg-white' }} text-white"></a>
                     </li>
@@ -30,15 +30,50 @@
                     <li>
                         <a href="/#footer" class="{{ Request::is('/#footer') ? ' text-[#EEE] bg-[#00d9ff] rounded md:bg-transparent md:text-[#00d9ff] md:p-0 dark:text-white md:dark:text-[#00d9ff] group transition duration-300': ' text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-[#cacaca] md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:bg-opacity-20 dark:hover:text-white md:dark:hover:bg-transparent group transition duration-300 ' }} block py-2 px-3 ">Kontak<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 {{ Request::is('/') ? 'bg-[#00d9ff]' :'bg-white' }} text-white"></a>
                     </li>
-                    @auth
-                    <form action="/logout" method="post" onsubmit="return confirm('Apakah anda yakin keluar?');">
-                        @csrf
-                        <button type="submit" class="delete-btn">Logout</button>
-                    </form>
-                    @endauth
+
+                    <div class="hidden lg:flex items-center space-x-3">
+                        <!-- User Logo -->
+                        <div class="relative">
+                            <button id="userButton" class="focus:outline-none">
+                                <!-- Add your user logo here -->
+                                <img src="asset/image/userNavbar.svg" alt="User Logo" class="h-8 rounded-full w-[]">
+                            </button>
+                            <!-- Mini Modal -->
+                            <div id="userModal" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2">
+                                @auth
+                                <form action="/logout" method="post" onsubmit="return confirm('Apakah anda yakin keluar?');">
+                                    @csrf
+                                    <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Logout
+                                    </button>
+                                </form>
+                                @else
+                                <div class="flex flex-col p-2 gap-2">
+                                    <a href="/masuk">Masuk</a>
+                                    <a href="/daftar">Daftar</a>
+                                </div>
+                                @endauth
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block lg:hidden">
+                        @auth
+                        <form action="/logout" method="post" onsubmit="return confirm('Apakah anda yakin keluar?');">
+                            @csrf
+                            <button type="submit" class="w-full text-left {{ Request::is('/#footer') ? ' text-[#EEE] bg-[#00d9ff] rounded md:bg-transparent md:text-[#00d9ff] md:p-0 dark:text-white md:dark:text-[#00d9ff] group transition duration-300': ' text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-[#cacaca] md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:bg-opacity-20 dark:hover:text-white md:dark:hover:bg-transparent group transition duration-300 ' }} block py-2 px-3 ">
+                                Logout
+                                <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 {{ Request::is('/') ? 'bg-[#00d9ff]' :'bg-white' }} text-white">
+                            </button>
+                        </form>
+                        @else
+                        <div class="flex flex-col lg:p-2 lg:gap-2">
+                            <a href="/masuk" class="w-full text-left {{ Request::is('/#footer') ? ' text-[#EEE] bg-[#00d9ff] rounded md:bg-transparent md:text-[#00d9ff] md:p-0 dark:text-white md:dark:text-[#00d9ff] group transition duration-300': ' text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-[#cacaca] md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:bg-opacity-20 dark:hover:text-white md:dark:hover:bg-transparent group transition duration-300 ' }} block py-2 px-3 ">Masuk <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 {{ Request::is('/') ? 'bg-[#00d9ff]' :'bg-white' }} text-white"></a>
+                            <a href="/daftar" class="w-full text-left {{ Request::is('/#footer') ? ' text-[#EEE] bg-[#00d9ff] rounded md:bg-transparent md:text-[#00d9ff] md:p-0 dark:text-white md:dark:text-[#00d9ff] group transition duration-300': ' text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-[#cacaca] md:dark:hover:text-white dark:hover:bg-gray-500 dark:hover:bg-opacity-20 dark:hover:text-white md:dark:hover:bg-transparent group transition duration-300 ' }} block py-2 px-3 ">Daftar <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 {{ Request::is('/') ? 'bg-[#00d9ff]' :'bg-white' }} text-white"></a>
+                        </div>
+                        @endauth
+                    </div>
                 </ul>
             </div>
-
         </div>
     </div>
 </nav>

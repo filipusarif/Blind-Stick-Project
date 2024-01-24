@@ -1,5 +1,5 @@
 <?php 
     foreach($nilaiSensor as $data){
-        echo $data->jarak;
+        echo $data->jarak."CM";
     }
 ?>

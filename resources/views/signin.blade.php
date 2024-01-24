@@ -29,15 +29,19 @@
                     <div id="pengguna" class="h-full w-full">
                         <div class="relative mt-2 w-full">
                             <input type="email" id="emailPenggunaID" name="emailPengguna" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2   transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
-                            <label for="emailPenggunaID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Email Pengguna</label>
+                            <label for="emailPenggunaID" class="absolute left-0  text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Email Pengguna</label>
                         </div>
                         <div class="relative mt-6 w-full">
                             <input type="text" id="usernamePenggunaID" name="usernamePengguna" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2 transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
-                            <label for="usernamePenggunaID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Nama Pengguna</label>
+                            <label for="usernamePenggunaID" class="absolute left-0  text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Nama Pengguna</label>
                         </div>
                         <div class="relative mt-6 w-full">
                             <input type="password" id="passwordPenggunaID" name="passwordPengguna" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2 transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
-                            <label for="passwordPenggunaID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Kata Sandi Pengguna</label>
+                            <label for="passwordPenggunaID" class="absolute left-0  text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Kata Sandi Pengguna</label>
+                        </div>
+                        <div class="relative mt-6 w-full">
+                            <input type="text" id="kodeID" name="kode" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2 transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
+                            <label for="kodeID" class="absolute left-0  text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Kode Tongkat</label>
                         </div>
                         <input type="hidden" name="rolePengguna" value="pengguna">    
                         <div id="nextButton" class="cursor-pointer w-fit lg:py-1.5 lg:px-7 py-2 px-7 bg-[#215695] rounded-[10px] font-medium text-white mt-9" >lanjut</div>
@@ -45,15 +49,15 @@
                     <div class="hidden h-full w-full" id="penjaga">
                         <div class="relative mt-2 w-full">
                             <input type="email" id="emailPenjagaID" name="emailPenjaga" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2   transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
-                            <label for="emailPenjagaID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Email Penjaga</label>
+                            <label for="emailPenjagaID" class="absolute left-0  text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Email Penjaga</label>
                         </div>
                         <div class="relative mt-6 w-full">
                             <input type="text" id="usernamePenjagaID" name="usernamePenjaga" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2 transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
-                            <label for="usernamePenjagaID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Nama Penjaga</label>
+                            <label for="usernamePenjagaID" class="absolute left-0  text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Nama Penjaga</label>
                         </div>
                         <div class="relative mt-6 w-full">
                             <input type="password" id="passwordPenjagaID" name="passwordPenjaga" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2 transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
-                            <label for="passwordPenjagaID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Kata Sandi Penjaga</label>
+                            <label for="passwordPenjagaID" class="absolute left-0  text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Kata Sandi Penjaga</label>
                         </div>
                         <input type="hidden" name="rolePenjaga" value="penjaga">
                         <input type="checkbox" name="" id="syarat" required class="mt-2">
@@ -68,9 +72,9 @@
                 <p class="mt-8">Sudah punya akun? <a href="/masuk" class="text-blue-500 font-medium">Masuk</a> proses ini hanya memerlukan waktu singkat.</p>
                 <!-- <a href="" class="text-blue-500 font-medium">lupa password?</a> -->
                 <div class="flex  mt-24 gap-2 justify-start w-full">
-                    <a href=""><img src="asset/image/githubLogin.svg" alt="github" width="35px"></a>
-                    <a href=""><img src="asset/image/whatsappLogin.svg" alt="whatsapp" width="35px"></a>
-                    <a href=""><img src="asset/image/instagramLogin.svg" alt="instagram" width="35px"></a>
+                    <a href="https://github.com/filipusarif/Blind-Stick-Project" target="_blank"><img src="asset/image/githubLogin.svg" alt="github" width="35px"></a>
+                    <a href="https://wa.me/qr/HTPPCZOWYBQVL1" target="_blank"><img src="asset/image/whatsappLogin.svg" alt="whatsapp" width="35px"></a>
+                    <a href="https://www.instagram.com/blindstick10?igsh=cG0yamo2OWZmNTU2" target="_blank"><img src="asset/image/instagramLogin.svg" alt="instagram" width="35px"></a>
                 </div>
             </div>
         </div>

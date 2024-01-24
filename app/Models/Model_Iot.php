@@ -11,5 +11,5 @@ class Model_Iot extends Model
 
     protected $table = 'tb_sensor';
     protected $primarykey = 'id';
-    protected $fillable = ['object','sos'];
+    protected $fillable = ['kode','object','jarak','sos'];
 }

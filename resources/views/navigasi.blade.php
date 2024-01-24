@@ -9,7 +9,7 @@
     <title>Blind Stick</title>
     @vite('resources/css/app.css')
     @include('component/scrollbar')
-    
+
     <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
 
 
@@ -25,16 +25,16 @@
 
     <!-- content -->
     <section class=" text-slate-200 flex gap-5 flex-col bg-gradient-to-tr from-[#071a30] via-[#215695] via-80% to-[#215695] overflow-hidden min-h-screen w-full relative lg:pt-0 lg:px-0 px-5 ">
-        <h2 id="directionsPanel" class="bg-green-500 w-[20%] h-[10%]  absolute z-40 text-center top-[80px] left-1/2 transform -translate-x-1/2 items-center flex justify-center font-medium text-[130%] rounded-[15px] shadow-2xl"></h2>
-        <div id="map" class="w-[80%]  z-10 mx-auto h-[400px] mt-[100px] rounded-[10px]"></div>
-        <div class="bg-[#173865] w-[80%] mx-auto h-fit flex py-4 rounded-[18px] items-center justify-center gap-5 flex-wrap mb-5">
-            <button class="w-[12%] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   " onclick="speak()"><img src="/asset/image/volumeSuara.svg" alt="" width="60px"> Bicara</button>
-            <a href="/pengguna" class=" w-[12%] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/user.svg" alt="" width="60px"> Pengguna</a>
-            <a href="/navigasi" class="w-[12%] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/maps.svg" alt="" width="60px"> Navigasi</a>
-            <a href="/riwayat" class="w-[12%] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/history.svg" alt="" width="60px"> Riwayat</a>
-            <a href="/bantuan" class="w-[12%] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/bantuanMenu.svg" alt="" width="60px"> Bantuan</a>
-            <button class="w-[12%] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl" id="tombolAktif" onclick="activeSound()"><img src="/asset/image/volumeUP.svg" alt="" width="60px">Suara Aktif</button>
-            <button class="w-[12%] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl" id="tombolNonaktif" onclick="nonActiveSound()"><img src="/asset/image/volumeDown.svg" alt="" width="60px">Suara Non-Aktif</button>
+        <h2 id="directionsPanel" class="bg-green-500 hidden lg:w-[25%] w-[25%] h-[8%] lg:h-[10%]  absolute z-40 text-center top-[80px] left-1/2 transform -translate-x-1/2 items-center justify-center font-medium text-[130%] rounded-[15px] shadow-2xl"></h2>
+        <div id="map" class="lg:w-[80%] w-[95%]  z-10 mx-auto h-[400px] mt-[100px] rounded-[10px]"></div>
+        <div class="bg-[#173865] lg:w-[80%] w-[95%] mx-auto h-fit flex py-4 rounded-[18px] items-center justify-center gap-5 flex-wrap mb-5">
+            <button class="w-[120px] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   " onclick="speak()"><img src="/asset/image/volumeSuara.svg" alt="" width="60px"> Bicara</button>
+            <a href="/pengguna" class=" w-[120px] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/user.svg" alt="" width="60px"> Pengguna</a>
+            <a href="/navigasi" class="w-[120px] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/maps.svg" alt="" width="60px"> Navigasi</a>
+            <a href="/riwayat" class="w-[120px] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/history.svg" alt="" width="60px"> Riwayat</a>
+            <a href="/bantuan" class="w-[120px] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/bantuanMenu.svg" alt="" width="60px"> Bantuan</a>
+            <button class="w-[120px] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl" id="tombolAktif" onclick="activeSound()"><img src="/asset/image/volumeUP.svg" alt="" width="60px">Suara Aktif</button>
+            <button class="w-[120px] h-[130px] flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl" id="tombolNonaktif" onclick="nonActiveSound()"><img src="/asset/image/volumeDown.svg" alt="" width="60px">Suara Non-Aktif</button>
         </div>
     </section>
 
@@ -55,12 +55,14 @@
 
         var userMarker, circle, destMarker, routingControl, routes, tempLat = 0,
             tempLong = 0,
-            statusUser = true, statusSpeak = false, tempDir,
+            statusUser = true,
+            statusSpeak = false,
+            tempDir,
             counter = 0;
         var currentPosition;
         var currentStepIndex = 0;
         var realTimeTracking = true;
-        var audioStatus= true;
+        var audioStatus = true;
 
 
         if (!navigator.geolocation) {
@@ -106,7 +108,7 @@
                     console.log(result);
                 }
             });
-            if(audioStatus = true){
+            if (audioStatus = true) {
                 speak("Rute Menuju " + name);
             }
             setInterval(() => {
@@ -142,23 +144,33 @@
                             direction = 'Lurus';
                         }
                         var directionsPanel = document.getElementById('directionsPanel');
+                        directionsPanel.classList.remove('hidden');
+                        directionsPanel.classList.add('flex');
+
                         if (inst[0].distance > 1) {
-                            text = '' + (inst[0].distance) + " meter belok " + direction;
-                            directionsPanel.innerHTML = text; 
-                            if(statusSpeak == false || tempDir != direction){
+                            if(direction == "Kiri"){
+                                text = '<img src="asset/image/kiri.svg" alt="kiri" width="50px"><div class="hidden lg:block">' + (inst[0].distance) + " meter belok " + direction + "</div>";
+                            }else if(direction == "Kanan"){
+                                text = '<img src="asset/image/kanan.svg" alt="kanan" width="50px"><div class="hidden lg:block">' + (inst[0].distance) + " meter belok " + direction+"</div>";
+                            }else{
+                                text = '<img src="asset/image/lurus.svg" alt="lurus" width="50px"><div class="hidden lg:block">' + (inst[0].distance) + " meter " + direction+"</div>";
+                            }
+                            directionsPanel.innerHTML = text;
+                            if (statusSpeak == false || tempDir != direction) {
                                 voice = parseFloat(inst[0].distance).toLocaleString('id-ID') + " meter lagi belok " + direction;
-                                if(audioStatus == true){
+                                if (audioStatus == true) {
                                     tempDir = direction;
                                     speak(voice)
                                     statusSpeak = true;
                                 }
-                            }if(inst[0].distance < 5){
+                            }
+                            if (inst[0].distance < 5) {
                                 statusSpeak = false;
                             }
                         } else {
                             text = 'sampai ditempat tujuan'
                             directionsPanel.innerHTML = text;
-                            if(audioStatus == true){
+                            if (audioStatus == true) {
                                 speak(text)
                             }
                         }
@@ -178,13 +190,13 @@
             speechSynthesis.speak(speech);
         }
 
-        
-        function activeSound(){
+
+        function activeSound() {
             audioStatus = true;
-            
+
         }
 
-        function nonActiveSound(){
+        function nonActiveSound() {
             audioStatus = false;
             speechSynthesis.cancel();
         }
@@ -221,6 +233,10 @@
             tempLong = long;
             // counter += 0.0002;
         }
+        document.getElementById('userButton').addEventListener('click', function() {
+            var userModal = document.getElementById('userModal');
+            userModal.classList.toggle('hidden');
+        });
     </script>
 </body>
 

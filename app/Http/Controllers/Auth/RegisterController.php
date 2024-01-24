@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Bantu;
+use App\Models\Model_Iot;
 
 class RegisterController extends Controller
 {
@@ -79,30 +80,38 @@ class RegisterController extends Controller
 
     public function actionregister(Request $request)
     {
-        $user = User::create([
-            'groups' => $request->emailPengguna,
-            'email' => $request->emailPengguna,
-            'username' => $request->usernamePengguna,
-            'password' => Hash::make($request->passwordPengguna),
-            'role' => $request->rolePengguna,
-        ]);
-
-        $user = User::create([
-            'groups' => $request->emailPengguna,
-            'email' => $request->emailPenjaga,
-            'username' => $request->usernamePenjaga,
-            'password' => Hash::make($request->passwordPenjaga),
-            'role' => $request->rolePenjaga,
-        ]);
-
-        $bantu = Bantu::create([
-            'groups' => $request->emailPengguna,
-            'bantuan' => 0,
-            'pengguna' => $request->emailPengguna,
-            'penjaga' => $request->emailPenjaga,
-        ]);
-
-        // Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
-        return redirect('/masuk');
+        $existingUser = User::where('email', $request->emailPengguna)->first();
+        $existingUser1 = User::where('email', $request->emailPenjaga)->first();
+        if(!$existingUser && !$existingUser1 && $request -> emailPengguna !== $request->emailPenjaga){
+            $user = User::create([
+                'groups'=> $request -> emailPengguna,
+                'email' => $request->emailPengguna,
+                'username' => $request->usernamePengguna,
+                'password' => Hash::make($request->passwordPengguna),
+                'role' => $request->rolePengguna,
+                'kode' => $request->kode,
+            ]);
+            $user = User::create([
+                'groups'=> $request -> emailPengguna,
+                'email' => $request->emailPenjaga,
+                'username' => $request->usernamePenjaga,
+                'password' => Hash::make($request->passwordPenjaga),
+                'role' => $request->rolePenjaga,
+                'kode' => $request->kode,
+            ]);
+            $user = Model_Iot::create([
+                'kode' => $request->kode,
+                'object' => 'Aman',
+                'jarak' => 0,
+                'password' => 0,
+                'sos'=> 0,
+            ]);
+    
+            // Session::flash('message', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
+            return redirect('/masuk');
+        }else{
+            return redirect('/');
+            // kasih msg email nya sudah ada
+        }
     }
 }

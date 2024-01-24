@@ -9,7 +9,7 @@
     @vite('resources/css/app.css')
     @include('component/scrollbar')
     <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         var nilaiSensor;
         var audioElement = new Audio('audio/audioObj.mp3');
         var tempSensor;
@@ -72,19 +72,10 @@
             }, 2000);
         });
         
-
-        window.onscroll = () => {
-            const nav = document.querySelector('#navBar');
-            if(this.scrollY <= 10){
-                nav.className = 'text-slate-400 bg-transparent transition ease-in-out delay-200  h-[50px] w-full flex items-center fixed text-slate-200 bg-transparent z-50';
-            }else{
-                nav.className = 'text-slate-400 bg-[#215695] bg-opacity-80 backdrop-blur-md transition ease-in-out delay-200 h-[50px] w-full flex items-center fixed text-slate-200 bg-transparent z-50';
-            } 
-        };
-    </script> -->
+    </script>
 </head>
 
-<body class="bg-slate-900">
+<body class="bg-slate-900 font-poppins">
     <!-- navbar -->
     @include('component/navbar')
 
@@ -94,19 +85,19 @@
             <img src="asset/image/kubus.svg" alt="" class="-left-56 -top-20 absolute opacity-50">
         </div>
         
-        <div class="container min-h-[80vh] mx-auto pt-[3%] pb-5 relative">
+        <div class="container min-h-[80vh] mx-auto lg:pt-[3%] pt-5 pb-5  relative">
             <h1 class="text-[200%] text-center font-extrabold leading-[60px] text-transparent bg-clip-text bg-gradient-to-r from-[#2996E5] to-[#28D9F1]">Layanan</h1>
             <p class="text-center -mt-2 mb-4">Monitoring object di sekitar anda</p>
             <div class="flex lg:flex-row flex-col-reverse items-center justify-center min-h-[80vh]  gap-3">
                 <div class=" flex flex-col basis-[70%] gap-5  w-full h-full lg:h-[80vh] ">
                     <div class="lg:basis-[70%] h-[200px] lg:h-auto bg-[#173865] flex justify-center items-center rounded-[20px]">
                         <div class="w-[50%] h-full text-center border-r-[4px] border-[#122F58]">
-                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tl-[10px] grid place-items-center text-[200%] font-bold">Halangan</h1>
-                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="obj">Ada</p>
+                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tl-[10px] grid place-items-center lg:text-[200%] text-[150%] font-bold">Halangan</h1>
+                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%] " id="obj">Loading</p>
                         </div>
                         <div class="w-[50%] h-full text-center">
-                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tr-[10px] grid place-items-center text-[200%] font-bold">Jarak</h1>
-                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="jarak" >95cm</p>
+                            <h1 class="w-full h-[30%] bg-[#122F58] rounded-tr-[10px] grid place-items-center lg:text-[200%] text-[150%] font-bold">Jarak</h1>
+                            <p class="w-full h-[70%] font-extrabold grid place-items-center text-[170%] lg:text-[300%]" id="jarak" >Loading</p>
                         </div>
                     </div>
                     <div class="bg-[#173865] w-full h-fit flex py-4 rounded-[18px] items-center justify-center gap-5 flex-wrap">
@@ -118,8 +109,8 @@
                     </div>
                 </div>
                 <div class="lg:basis-[30%] w-full lg:h-[80vh] bg-[#173865] flex gap-5 p-5 items-center justify-center lg:flex-col flex-row rounded-[20px] h-full">
-                    <button class="basis-[50%] bg-[#122F58] p-4 rounded-[15px] drop-shadow-xl" id="tombolAktif" onclick="activeSound()" ><img src="/asset/image/volumeUP.svg" alt="" width="150px"></button>
-                    <button class="basis-[50%] bg-[#122F58] p-4 rounded-[15px] drop-shadow-xl" id="tombolNonaktif" onclick="nonActiveSound()" ><img src="/asset/image/volumeDown.svg" alt="" width="150px"></button>
+                    <button class="basis-[50%] bg-[#122F58] p-4 rounded-[15px] drop-shadow-xl lg:text-[100%] text-[114%]" id="tombolAktif" onclick="activeSound()" ><img src="/asset/image/volumeUP.svg" alt="" width="150px">Suara Aktif</button>
+                    <button class="basis-[50%] bg-[#122F58] p-4 rounded-[15px] drop-shadow-xl" id="tombolNonaktif" onclick="nonActiveSound()" ><img src="/asset/image/volumeDown.svg" alt="" width="150px">Suara Non-Aktif</button>
                 </div>
             </div>
         </div>
@@ -137,6 +128,10 @@
         		nav.className = 'transition ease-in-out delay-200  border-gray-200 dark:bg-[#215695] bg-[#215695] dark:bg-opacity-60 backdrop-blur-md   fixed w-full z-50';
         	} 
         };
+        document.getElementById('userButton').addEventListener('click', function() {
+            var userModal = document.getElementById('userModal');
+            userModal.classList.toggle('hidden');
+        });
     </script>
 </body>
 

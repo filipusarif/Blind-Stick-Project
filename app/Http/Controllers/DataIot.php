@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Model_Iot;
+use App\Models\Bantu;
+
 
 class DataIot extends Controller
 {
@@ -16,7 +18,10 @@ class DataIot extends Controller
         return view('bacaJarak', ['nilaiSensor'=>$sensor]);
     }
     public function simpanSensor(){
-        Model_Iot::where('id','1')->update(['object'=>request()->object, 'jarak'=>request()->jarak, 'sos'=>request()->sos]);
+        Model_Iot::where('kode',request()->kode)->update(['object'=>request()->object, 'jarak'=>request()->jarak, 'sos'=>request()->sos]);
+        if(request()->sos == 1){
+            Bantu::where('kode',request()->kode)->update(['bantuan'=>request()->sos]);
+        }
     }
 
     public function sendToESP32(Request $request)

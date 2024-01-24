@@ -30,11 +30,11 @@
                     <div class="h-full w-full">
                         <div class="relative mt-2 w-full">
                             <input type="email" id="emailID" name="email" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2   transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
-                            <label for="emailID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Masukkan Email </label>
+                            <label for="emailID" class="absolute left-0 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full ">Masukkan Email </label>
                         </div>
                         <div class="relative mt-6 w-full">
                             <input type="password" id="passwordID" name="password" class="border-b py-[2px] focus:outline-none focus:border-[#215695] focus:border-b-2 transition-colors peer w-full" autocomplete="off" oninput="checkInputNotEmpty(this)" onblur="checkInputNotEmpty(this)">
-                            <label for="passwordID" class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Masukkan Kata Sandi </label>
+                            <label for="passwordID" class="absolute left-0 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-[#215695] transition-all w-full">Masukkan Kata Sandi </label>
                         </div>
                         <button type="submit" class="cursor-pointer w-fit lg:py-1.5 lg:px-7 py-2 px-7 bg-[#215695] rounded-[10px] font-medium text-white mt-7">Masuk</button>
                         
@@ -42,11 +42,11 @@
                 </form>
 
                 <p class="mt-8">Belum punya akun? <a href="/daftar" class="text-blue-500 font-medium">Daftar</a> proses ini hanya memerlukan waktu singkat.</p>
-                <a href="" class="text-blue-500 font-medium">lupa password?</a>
+                <!-- <a href="" class="text-blue-500 font-medium">lupa password?</a> -->
                 <div class="flex  mt-28 gap-2 justify-start w-full">
-                    <a href=""><img src="asset/image/githubLogin.svg" alt="github" width="35px"></a>
-                    <a href=""><img src="asset/image/whatsappLogin.svg" alt="whatsapp" width="35px"></a>
-                    <a href=""><img src="asset/image/instagramLogin.svg" alt="instagram" width="35px"></a>
+                    <a href="https://github.com/filipusarif/Blind-Stick-Project" target="_blank"><img src="asset/image/githubLogin.svg" alt="github" width="35px"></a>
+                    <a href="https://wa.me/qr/HTPPCZOWYBQVL1" target="_blank"><img src="asset/image/whatsappLogin.svg" alt="whatsapp" width="35px"></a>
+                    <a href="https://www.instagram.com/blindstick10?igsh=cG0yamo2OWZmNTU2" target="_blank"><img src="asset/image/instagramLogin.svg" alt="instagram" width="35px"></a>
                 </div>
             </div>
         </div>
