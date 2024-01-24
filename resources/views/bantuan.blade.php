@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="bg-[#173865] w-full h-fit flex py-4 rounded-[18px] items-center justify-center gap-5 flex-wrap">
-                        <button class="flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   " onclick="speak()"><img src="/asset/image/volumeSuara.svg" alt="" width="100px"> Bicara</button>
+                        <button class="flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   " onclick="speak('anda berada di halaman bantuan')" ><img src="/asset/image/volumeSuara.svg" alt="" width="100px"> Bicara</button>
                         <a href="/pengguna" class="flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/user.svg" alt="" width="100px"> Pengguna</a>
                         <a href="/navigasi" class="flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/maps.svg" alt="" width="100px"> Navigasi</a>
                         <a href="/riwayat" class="flex flex-col items-center font-medium bg-[#122F58] p-4 rounded-[10px] drop-shadow-xl   "><img src="/asset/image/history.svg" alt="" width="100px"> Riwayat</a>
@@ -71,10 +71,23 @@
 
         var nilaiSensor;    
 
+        var temp = "";
         $(document).ready(function() {
             setInterval(function() {
                 $("#obj").load("{{ url('bacaBantuan') }}", function(response, status, xhr) {
-                    console.log('succes');                                                  
+                    if (status === "success") {
+                        // Response contains the data loaded from the server
+                        var responseData = $.trim(response);
+                        // Check if the response data is equal to 1
+                        if (responseData != temp) {
+                            speak("penjaga"+responseData);
+                            temp = responseData;
+                        } else {
+                            console.log('Data tidak sesuai dengan yang diharapkan: ' + responseData);
+                        }
+                    } else {
+                        console.log('Gagal memuat data');
+                    }                                                 
                 });
             }, 2000);
         });
@@ -83,6 +96,29 @@
             var userModal = document.getElementById('userModal');
             userModal.classList.toggle('hidden');
         });
+
+        function speak(voice) {
+            var speech = new SpeechSynthesisUtterance();
+            // Set the text to be spoken
+            speech.text = voice;
+            speech.lang = 'id-ID';
+            // Use the default speech synthesizer
+            var speechSynthesis = window.speechSynthesis;
+            speechSynthesis.speak(speech);
+        }
+
+
+        function speakOnPageLoad() {
+            var speech = new SpeechSynthesisUtterance();
+            // Set the text to be spoken
+            speech.text = "anda berada di halaman Bantuan";
+            speech.lang = 'id-ID';
+            // Use the default speech synthesizer
+            var speechSynthesis = window.speechSynthesis;
+            speechSynthesis.speak(speech);
+        }
+
+        document.addEventListener('DOMContentLoaded', speakOnPageLoad());
     </script>
 </body>
 

@@ -10,7 +10,7 @@
     @vite('resources/css/app.css')
     @include('component/scrollbar')
     <script type="text/javascript" src="{{ ('jquery/jquery.min.js') }}"></script>
-    
+
 </head>
 
 <body class="bg-slate-900">
@@ -82,10 +82,39 @@
         $(document).ready(function() {
             setInterval(function() {
                 $("#obj").load("{{ url('bacaSOS') }}", function(response, status, xhr) {
-                    console.log('succes');                                                  
+                    if (status === "success") {
+                        // Response contains the data loaded from the server
+                        var responseData = $.trim(response);
+
+                        // Check if the response data is equal to 1
+                        if (responseData === "Perlu Bantuan!") {
+                            console.log('Data berhasil dimuat: ' + responseData);
+                            // Panggil fungsi untuk menampilkan notifikasi di sini
+                            showNotification("Pengguna Blind Stick membutuhkan bantuan!");
+                        } else {
+                            console.log('Data tidak sesuai dengan yang diharapkan: ' + responseData);
+                        }
+                    } else {
+                        console.log('Gagal memuat data');
+                    }
                 });
             }, 2000);
         });
+
+        function showNotification(message) {
+            // Check if the browser supports notifications
+            if ('Notification' in window) {
+                // Request permission to show notifications
+                Notification.requestPermission().then(function(permission) {
+                    // Check if permission is granted
+                    if (permission === 'granted') {
+                        // Create a notification
+                        var notification = new Notification(message);
+                    }
+                });
+            }
+        }
+
         document.getElementById('userButton').addEventListener('click', function() {
             var userModal = document.getElementById('userModal');
             userModal.classList.toggle('hidden');

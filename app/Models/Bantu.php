@@ -13,6 +13,7 @@ class Bantu extends Model
     protected $fillable = [
         'groups',
         'bantuan',
+        'feedback',
         'pengguna',
         'penjaga',
     ];

@@ -85,6 +85,18 @@
                 label.classList.remove('text-xs', 'text-[#215695]', '-top-4');
             }
         }
+
+        function speakOnPageLoad() {
+            var speech = new SpeechSynthesisUtterance();
+            // Set the text to be spoken
+            speech.text = "anda berada di halaman masuk";
+            speech.lang = 'id-ID';
+            // Use the default speech synthesizer
+            var speechSynthesis = window.speechSynthesis;
+            speechSynthesis.speak(speech);
+        }
+
+        document.addEventListener('DOMContentLoaded', speakOnPageLoad());
     </script>
 </body>
 

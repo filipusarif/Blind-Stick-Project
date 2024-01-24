@@ -99,6 +99,13 @@ class RegisterController extends Controller
                 'role' => $request->rolePenjaga,
                 'kode' => $request->kode,
             ]);
+            $user = Bantu::create([
+                'groups'=> $request -> emailPengguna,
+                'bantuan' => 0,
+                'feedback' => 0,
+                'pengguna' => $request -> emailPengguna,
+                'penjaga' => $request->emailPenjaga,
+            ]);
             $user = Model_Iot::create([
                 'kode' => $request->kode,
                 'object' => 'Aman',

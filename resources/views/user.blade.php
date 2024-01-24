@@ -85,6 +85,9 @@
             penjaga.style.display = "none";
         });
 
+        
+
+        
         function checkInputNotEmpty(input) {
             const label = input.nextElementSibling;
             if (input.value.trim() !== '') {
@@ -94,7 +97,17 @@
             }
         }
 
-        
+        function speakOnPageLoad() {
+            var speech = new SpeechSynthesisUtterance();
+            // Set the text to be spoken
+            speech.text = "anda berada di halaman Pengguna";
+            speech.lang = 'id-ID';
+            // Use the default speech synthesizer
+            var speechSynthesis = window.speechSynthesis;
+            speechSynthesis.speak(speech);
+        }
+
+        window.addEventListener('load', speakOnPageLoad());
     </script>
 </body>
 
