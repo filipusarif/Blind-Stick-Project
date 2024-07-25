@@ -97,6 +97,18 @@
             audioStatus = false;
         }
 
+        function speakSensor(jarak) {
+            var speech = new SpeechSynthesisUtterance1();
+            // Set the text to be spoken
+            speech.text = "ada object pada jarak "+jarak;
+            speech.lang = 'id-ID';
+            // Use the default speech synthesizer
+            var speechSynthesis1 = window.speechSynthesis;
+            speechSynthesis1.speak(speech);
+        }
+
+        var jarakSensor;
+
         function speakTo() {
             // Menggunakan API pengenalan suara untuk mendengarkan perintah
             if (window.SpeechRecognition || window.webkitSpeechRecognition) {
@@ -124,7 +136,8 @@
                         // Lakukan sesuatu dengan nilaiSensor
                         if (nilaiSensor === "ada" && (tempSensor !== nilaiSensor || countSensor >= 3) && audioStatus === true) {
                             // Memainkan suara
-                            audioElement.play();
+                            // audioElement.play();
+                            speakSensor(jarakSensor);
                             countSensor = 0;
                         } else if (nilaiSensor === "ada" && audioStatus === true) {
                             countSensor++;
@@ -139,6 +152,7 @@
                         var nilaiJarak = response; // Nilai dari hasil bacaJarak
                         // Lakukan sesuatu dengan nilaiJarak
                         console.log("Nilai Jarak: " + nilaiJarak);
+                        jarakSensor = nilaiJarak;
                     }
                 });
             }, 2000);
